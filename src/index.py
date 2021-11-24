@@ -1,3 +1,6 @@
+"""väliaikasta
+"""
+
 def main():
     """Ohjelman päälooppi. sisältö väliakasta
 

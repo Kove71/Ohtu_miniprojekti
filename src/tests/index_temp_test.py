@@ -1,8 +1,11 @@
+"""väliaikanen testi indexille
+"""
+
 import unittest
 from index import main
 
 class TestIndex(unittest.TestCase):
-    
+
     """Testataan kui nää testit toimii. väliakanen.
     """
 
