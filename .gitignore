@@ -2,4 +2,6 @@ htmlcov/
 .coverage
 src/__pycache__/
 src/tests/__pycache__/
+src/ui/__pycache__/
+src/entities/__pycache__/
 .pytest_cache
