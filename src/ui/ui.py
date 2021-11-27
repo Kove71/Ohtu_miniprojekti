@@ -1,20 +1,21 @@
 """Yksinkertainen tekstikäyttöliittymä.
 """
 from entities.lukuvinkki import LukuVinkki
+from repositories.db_interface import DatabaseInterface
 
 class UI:
     """Käyttöliittymäluokka, joka pystyy lisäämään ja
     näyttämään lukuvinkkejä.
     """
 
-    def __init__(self):
+    def __init__(self, db: DatabaseInterface):
         self.actions = {
             "a": "add a new item",
             "v": "view your items",
             "q": "exit program"
         }
-        #korvataan ku tietokanta tulee
-        self.items = []
+
+        self.db = db
 
     def start(self):
         """Käyttöliittymälooppi. Kysyy toimintaa ja kutsuu
@@ -48,10 +49,8 @@ class UI:
         """Kysyy lukuvinkin tiedot ja lisää sen listaan
         """
         description = input("item description: ")
+        self.db.Add(description)
         item = LukuVinkki(description)
-
-        #väliaikanen korvataan kun tietokanta tulee käyttöön
-        self.items.append(item)
 
         print(f"\nitem {item} added \n")
 
@@ -60,5 +59,5 @@ class UI:
         """Näyttää listan lukuvinkit
         """
         print("\nitems: \n")
-        for i, item in enumerate(self.items):
-            print(i + 1, item, "\n")
+        for lukuvinkki in self.db.Read():
+            print(f'{lukuvinkki[0]}: {lukuvinkki[1]}')
