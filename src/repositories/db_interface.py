@@ -1,5 +1,6 @@
 import sqlite3
 import os
+from entities.lukuvinkki import LukuVinkki
 
 class DatabaseInterface:
     def __init__(self):
@@ -7,11 +8,16 @@ class DatabaseInterface:
         self._db.isolation_level = None
         self._db.execute("CREATE TABLE IF NOT EXISTS lukuvinkit (id INTEGER PRIMARY KEY, kuvaus TEXT)")
 
-    def Add(self, description: str):
-        self._db.execute("INSERT INTO lukuvinkit (kuvaus) VALUES (?)", [description])
+    def Add(self, lukuvinkki: LukuVinkki):
+        """Ottaa LukuVinkki-olion, lisää tietokantaan
+        """
+        self._db.execute("INSERT INTO lukuvinkit (kuvaus) VALUES (?)", [lukuvinkki.kuvaus])
 
     def Read(self):
-        return self._db.execute("SELECT * FROM lukuvinkit").fetchall()
+        """Palauttaa listan LukuVinkki-olioita
+        """
+        return [LukuVinkki(lukuvinkki[1]) for lukuvinkki in self._db.execute("SELECT * FROM lukuvinkit").fetchall()]
+
 
     def Clear(self):
         self._db.execute("DELETE FROM lukuvinkit")

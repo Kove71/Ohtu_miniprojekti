@@ -53,8 +53,8 @@ class UI:
         """Kysyy lukuvinkin tiedot ja lisää sen listaan
         """
         description = input("item description: ")
-        self.db.Add(description)
         item = LukuVinkki(description)
+        self.db.Add(item)
 
         print(f"\nitem {item} added \n")
 
@@ -64,7 +64,7 @@ class UI:
         """
         print("\nitems: \n")
         for lukuvinkki in self.db.Read():
-            print(f'{lukuvinkki[0]}: {lukuvinkki[1]}')
+            print(lukuvinkki)
 
 
     def _clear_db(self):
