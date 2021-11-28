@@ -9,7 +9,7 @@ class UI:
     """
 
     def __init__(self, db: DatabaseInterface):
-        self.actions = {
+        self._actions = {
             "a": "add a new item",
             "v": "view your items",
             "c": "clear all items",
@@ -22,7 +22,7 @@ class UI:
         """Käyttöliittymälooppi. Kysyy toimintaa ja kutsuu
         sen perusteella toiminnan käsittelevää metodia.
         """
-        print("Recommendations")
+        print("Reading tips")
 
         while True:
             self._print_actions()
@@ -45,8 +45,8 @@ class UI:
         """Tulostaa vaihtoehdot
         """
         print("choose action:")
-        for i in self.actions:
-            print(f"\"{i}\": {self.actions[i]}")
+        for i in self._actions:
+            print(f"\"{i}\": {self._actions[i]}")
 
 
     def _add_item(self):
@@ -63,12 +63,12 @@ class UI:
         """Näyttää listan lukuvinkit
         """
         print("\nitems: \n")
-        for index, lukuvinkki in enumerate(self.db.Read()):
-            print(f'{index+1}: {lukuvinkki}')
+        for index, item in enumerate(self.db.Read()):
+            print(f'{index+1}: {item}')
+        print("")
 
 
     def _clear_db(self):
         """Poistaa kaikki lukuvinkit
         """
         self.db.Clear()
-
