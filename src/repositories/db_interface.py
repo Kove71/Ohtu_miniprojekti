@@ -3,7 +3,7 @@ import os
 
 class DatabaseInterface:
     def __init__(self):
-        self._db = sqlite3.connect(os.path.realpath("..") + "/data/lukuvinkit.db")
+        self._db = sqlite3.connect(os.path.realpath("") + "/data/lukuvinkit.db")
         self._db.isolation_level = None
 
     def Add(self, description: str):
