@@ -12,6 +12,7 @@ class UI:
         self.actions = {
             "a": "add a new item",
             "v": "view your items",
+            "c": "clear all items",
             "q": "exit program"
         }
 
@@ -31,7 +32,10 @@ class UI:
                 self._view_items()
             elif action == "a":
                 self._add_item()
+            elif action == "c":
+                self._clear_db()
             elif action == "q":
+                self.db.Delete()
                 break
             else:
                 print("\ncommand not found\n")
@@ -61,3 +65,10 @@ class UI:
         print("\nitems: \n")
         for lukuvinkki in self.db.Read():
             print(f'{lukuvinkki[0]}: {lukuvinkki[1]}')
+
+
+    def _clear_db(self):
+        """Poistaa kaikki lukuvinkit
+        """
+        self.db.Clear()
+
