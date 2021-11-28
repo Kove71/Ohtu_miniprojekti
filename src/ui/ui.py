@@ -1,6 +1,6 @@
 """Yksinkertainen tekstikäyttöliittymä.
 """
-from entities.lukuvinkki import LukuVinkki
+from entities.readingtip import ReadingTip
 from repositories.db_interface import DatabaseInterface
 
 class UI:
@@ -53,7 +53,7 @@ class UI:
         """Kysyy lukuvinkin tiedot ja lisää sen listaan
         """
         description = input("item description: ")
-        item = LukuVinkki(description)
+        item = ReadingTip(description)
         self.db.Add(item)
 
         print(f"\nitem {item} added \n")

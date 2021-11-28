@@ -1,7 +1,7 @@
 """Tests for the class ReadingTip 
 """
 import unittest
-from readingtips.readingtip import ReadingTip
+from entities.readingtip import ReadingTip
 
 class TestTip(unittest.TestCase):
 
