@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.2 (Python 3.8.10 on linux)" generated="20211126 13:45:54.578" rpa="false" schemaversion="2">
+<suite id="s1" name="Tests" source="/home/airassof/Ohtu_miniprojekti/src/tests">
+<suite id="s1-s1" name="Insertion" source="/home/airassof/Ohtu_miniprojekti/src/tests/insertion.robot">
+<test id="s1-s1-t1" name="Insert With Valid Credentials">
+<kw name="Input" library="ReadingtipLibrary">
+<arg>value</arg>
+<status status="PASS" starttime="20211126 13:45:54.600" endtime="20211126 13:45:54.600"/>
+</kw>
+<kw name="Output Should Contain" library="ReadingtipLibrary">
+<arg>true</arg>
+<status status="PASS" starttime="20211126 13:45:54.600" endtime="20211126 13:45:54.601"/>
+</kw>
+<status status="PASS" starttime="20211126 13:45:54.599" endtime="20211126 13:45:54.601"/>
+</test>
+<status status="PASS" starttime="20211126 13:45:54.596" endtime="20211126 13:45:54.601"/>
+</suite>
+<status status="PASS" starttime="20211126 13:45:54.579" endtime="20211126 13:45:54.602"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Tests">Tests</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Insertion">Tests.Insertion</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
