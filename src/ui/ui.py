@@ -63,8 +63,8 @@ class UI:
         """Näyttää listan lukuvinkit
         """
         print("\nitems: \n")
-        for lukuvinkki in self.db.Read():
-            print(lukuvinkki)
+        for index, lukuvinkki in enumerate(self.db.Read()):
+            print(f'{index+1}: {lukuvinkki}')
 
 
     def _clear_db(self):
