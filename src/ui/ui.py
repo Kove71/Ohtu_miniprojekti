@@ -35,7 +35,7 @@ class UI:
             elif action == "c":
                 self._clear_db()
             elif action == "q":
-                self.db.Delete()
+                self.db.delete()
                 break
             else:
                 print("\ncommand not found\n")
@@ -54,7 +54,7 @@ class UI:
         """
         description = input("item description: ")
         item = ReadingTip(description)
-        self.db.Add(item)
+        self.db.add(item)
 
         print(f"\nitem {item} added \n")
 
@@ -63,7 +63,7 @@ class UI:
         """Näyttää listan lukuvinkit
         """
         print("\nitems: \n")
-        for index, item in enumerate(self.db.Read()):
+        for index, item in enumerate(self.db.read()):
             print(f'{index+1}: {item}')
         print("")
 
@@ -71,4 +71,4 @@ class UI:
     def _clear_db(self):
         """Poistaa kaikki lukuvinkit
         """
-        self.db.Clear()
+        self.db.clear()
