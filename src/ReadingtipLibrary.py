@@ -1,4 +1,3 @@
-#from readingtips.readingtip import ReadingTip
 from stub_io import StubIO
 
 class ReadingtipLibrary:

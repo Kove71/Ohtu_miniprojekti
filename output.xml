@@ -1,177 +1,170 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 4.1.2 (Python 3.8.10 on linux)" generated="20211129 02:10:18.747" rpa="false" schemaversion="2">
+<robot generator="Robot 4.1.2 (Python 3.8.10 on linux)" generated="20211129 14:19:39.720" rpa="false" schemaversion="2">
 <suite id="s1" name="Tests" source="/home/airassof/Ohtu_miniprojekti/src/tests">
 <suite id="s1-s1" name="Insertion" source="/home/airassof/Ohtu_miniprojekti/src/tests/insertion.robot">
 <test id="s1-s1-t1" name="Insert Readingtip">
-<kw name="Insert Initial Readingtip" type="SETUP">
-<kw name="Creating Readingtip" library="resource">
-<arg>Vakooja ja petturi</arg>
 <kw name="Input Add Command" library="resource">
 <kw name="Input" library="ReadingtipLibrary">
 <arg>a</arg>
-<status status="PASS" starttime="20211129 02:10:18.767" endtime="20211129 02:10:18.767"/>
+<status status="PASS" starttime="20211129 14:19:39.739" endtime="20211129 14:19:39.739"/>
 </kw>
-<status status="PASS" starttime="20211129 02:10:18.767" endtime="20211129 02:10:18.767"/>
+<status status="PASS" starttime="20211129 14:19:39.739" endtime="20211129 14:19:39.739"/>
 </kw>
-<kw name="Input" library="ReadingtipLibrary">
-<arg>${readingtip}</arg>
-<status status="PASS" starttime="20211129 02:10:18.767" endtime="20211129 02:10:18.767"/>
-</kw>
-<kw name="Run Application" library="ReadingtipLibrary">
-<status status="PASS" starttime="20211129 02:10:18.767" endtime="20211129 02:10:18.768"/>
-</kw>
-<status status="PASS" starttime="20211129 02:10:18.766" endtime="20211129 02:10:18.768"/>
-</kw>
-<status status="PASS" starttime="20211129 02:10:18.766" endtime="20211129 02:10:18.768"/>
-</kw>
-<kw name="Creating Readingtip" library="resource">
+<kw name="Input Credentials" library="resource">
 <arg>Ylioppilaslehti 2/2018</arg>
-<kw name="Input Add Command" library="resource">
-<kw name="Input" library="ReadingtipLibrary">
-<arg>a</arg>
-<status status="PASS" starttime="20211129 02:10:18.769" endtime="20211129 02:10:18.769"/>
-</kw>
-<status status="PASS" starttime="20211129 02:10:18.768" endtime="20211129 02:10:18.769"/>
-</kw>
 <kw name="Input" library="ReadingtipLibrary">
 <arg>${readingtip}</arg>
-<status status="PASS" starttime="20211129 02:10:18.769" endtime="20211129 02:10:18.769"/>
+<status status="PASS" starttime="20211129 14:19:39.740" endtime="20211129 14:19:39.740"/>
 </kw>
+<status status="PASS" starttime="20211129 14:19:39.740" endtime="20211129 14:19:39.740"/>
+</kw>
+<kw name="Application Runs With Given Commands" library="resource">
 <kw name="Run Application" library="ReadingtipLibrary">
-<status status="PASS" starttime="20211129 02:10:18.769" endtime="20211129 02:10:18.770"/>
+<status status="PASS" starttime="20211129 14:19:39.741" endtime="20211129 14:19:39.741"/>
 </kw>
-<status status="PASS" starttime="20211129 02:10:18.768" endtime="20211129 02:10:18.770"/>
+<status status="PASS" starttime="20211129 14:19:39.740" endtime="20211129 14:19:39.741"/>
 </kw>
 <kw name="Last Output Should Contain" library="ReadingtipLibrary">
 <arg>item Ylioppilaslehti 2/2018 added</arg>
-<status status="PASS" starttime="20211129 02:10:18.770" endtime="20211129 02:10:18.770"/>
+<status status="PASS" starttime="20211129 14:19:39.741" endtime="20211129 14:19:39.741"/>
 </kw>
-<status status="PASS" starttime="20211129 02:10:18.766" endtime="20211129 02:10:18.770"/>
+<status status="PASS" starttime="20211129 14:19:39.739" endtime="20211129 14:19:39.741"/>
 </test>
-<test id="s1-s1-t2" name="View All Items When One Readingtip Added">
-<kw name="Insert Initial Readingtip" type="SETUP">
-<kw name="Creating Readingtip" library="resource">
-<arg>Vakooja ja petturi</arg>
+<test id="s1-s1-t2" name="View All Items When Two Readingtips Added">
 <kw name="Input Add Command" library="resource">
 <kw name="Input" library="ReadingtipLibrary">
 <arg>a</arg>
-<status status="PASS" starttime="20211129 02:10:18.771" endtime="20211129 02:10:18.771"/>
+<status status="PASS" starttime="20211129 14:19:39.743" endtime="20211129 14:19:39.743"/>
 </kw>
-<status status="PASS" starttime="20211129 02:10:18.771" endtime="20211129 02:10:18.771"/>
+<status status="PASS" starttime="20211129 14:19:39.742" endtime="20211129 14:19:39.743"/>
 </kw>
+<kw name="Input Credentials" library="resource">
+<arg>Kirjanen</arg>
 <kw name="Input" library="ReadingtipLibrary">
 <arg>${readingtip}</arg>
-<status status="PASS" starttime="20211129 02:10:18.771" endtime="20211129 02:10:18.772"/>
+<status status="PASS" starttime="20211129 14:19:39.743" endtime="20211129 14:19:39.743"/>
 </kw>
-<kw name="Run Application" library="ReadingtipLibrary">
-<status status="PASS" starttime="20211129 02:10:18.772" endtime="20211129 02:10:18.772"/>
+<status status="PASS" starttime="20211129 14:19:39.743" endtime="20211129 14:19:39.743"/>
 </kw>
-<status status="PASS" starttime="20211129 02:10:18.771" endtime="20211129 02:10:18.772"/>
+<kw name="Input Add Command" library="resource">
+<kw name="Input" library="ReadingtipLibrary">
+<arg>a</arg>
+<status status="PASS" starttime="20211129 14:19:39.744" endtime="20211129 14:19:39.744"/>
 </kw>
-<status status="PASS" starttime="20211129 02:10:18.771" endtime="20211129 02:10:18.772"/>
+<status status="PASS" starttime="20211129 14:19:39.744" endtime="20211129 14:19:39.744"/>
+</kw>
+<kw name="Input Credentials" library="resource">
+<arg>Vakooja ja petturi</arg>
+<kw name="Input" library="ReadingtipLibrary">
+<arg>${readingtip}</arg>
+<status status="PASS" starttime="20211129 14:19:39.744" endtime="20211129 14:19:39.744"/>
+</kw>
+<status status="PASS" starttime="20211129 14:19:39.744" endtime="20211129 14:19:39.745"/>
 </kw>
 <kw name="Input View Command" library="resource">
 <kw name="Input" library="ReadingtipLibrary">
 <arg>v</arg>
-<status status="PASS" starttime="20211129 02:10:18.772" endtime="20211129 02:10:18.772"/>
+<status status="PASS" starttime="20211129 14:19:39.745" endtime="20211129 14:19:39.745"/>
 </kw>
-<status status="PASS" starttime="20211129 02:10:18.772" endtime="20211129 02:10:18.773"/>
+<status status="PASS" starttime="20211129 14:19:39.745" endtime="20211129 14:19:39.745"/>
 </kw>
+<kw name="Application Runs With Given Commands" library="resource">
 <kw name="Run Application" library="ReadingtipLibrary">
-<status status="PASS" starttime="20211129 02:10:18.773" endtime="20211129 02:10:18.773"/>
+<status status="PASS" starttime="20211129 14:19:39.745" endtime="20211129 14:19:39.746"/>
+</kw>
+<status status="PASS" starttime="20211129 14:19:39.745" endtime="20211129 14:19:39.746"/>
 </kw>
 <kw name="Last Output Should Contain" library="ReadingtipLibrary">
-<arg>item Vakooja ja petturi added</arg>
-<status status="PASS" starttime="20211129 02:10:18.773" endtime="20211129 02:10:18.773"/>
-</kw>
-<status status="PASS" starttime="20211129 02:10:18.770" endtime="20211129 02:10:18.773"/>
-</test>
-<test id="s1-s1-t3" name="Readingtip Removal When Two Readingtip Added">
-<kw name="Insert Initial Readingtip" type="SETUP">
-<kw name="Creating Readingtip" library="resource">
 <arg>Vakooja ja petturi</arg>
-<kw name="Input Add Command" library="resource">
-<kw name="Input" library="ReadingtipLibrary">
-<arg>a</arg>
-<status status="PASS" starttime="20211129 02:10:18.775" endtime="20211129 02:10:18.775"/>
+<status status="PASS" starttime="20211129 14:19:39.746" endtime="20211129 14:19:39.746"/>
 </kw>
-<status status="PASS" starttime="20211129 02:10:18.774" endtime="20211129 02:10:18.775"/>
-</kw>
-<kw name="Input" library="ReadingtipLibrary">
-<arg>${readingtip}</arg>
-<status status="PASS" starttime="20211129 02:10:18.775" endtime="20211129 02:10:18.775"/>
-</kw>
-<kw name="Run Application" library="ReadingtipLibrary">
-<status status="PASS" starttime="20211129 02:10:18.775" endtime="20211129 02:10:18.775"/>
-</kw>
-<status status="PASS" starttime="20211129 02:10:18.774" endtime="20211129 02:10:18.775"/>
-</kw>
-<status status="PASS" starttime="20211129 02:10:18.774" endtime="20211129 02:10:18.775"/>
-</kw>
+<status status="PASS" starttime="20211129 14:19:39.742" endtime="20211129 14:19:39.746"/>
+</test>
+<test id="s1-s1-t3" name="Clear All Readingtips">
 <kw name="Creating Readingtip" library="resource">
 <arg>Ylioppilaslehti 2/2018</arg>
 <kw name="Input Add Command" library="resource">
 <kw name="Input" library="ReadingtipLibrary">
 <arg>a</arg>
-<status status="PASS" starttime="20211129 02:10:18.776" endtime="20211129 02:10:18.776"/>
+<status status="PASS" starttime="20211129 14:19:39.747" endtime="20211129 14:19:39.747"/>
 </kw>
-<status status="PASS" starttime="20211129 02:10:18.776" endtime="20211129 02:10:18.776"/>
+<status status="PASS" starttime="20211129 14:19:39.747" endtime="20211129 14:19:39.747"/>
 </kw>
 <kw name="Input" library="ReadingtipLibrary">
 <arg>${readingtip}</arg>
-<status status="PASS" starttime="20211129 02:10:18.776" endtime="20211129 02:10:18.776"/>
+<status status="PASS" starttime="20211129 14:19:39.747" endtime="20211129 14:19:39.748"/>
 </kw>
 <kw name="Run Application" library="ReadingtipLibrary">
-<status status="PASS" starttime="20211129 02:10:18.777" endtime="20211129 02:10:18.777"/>
+<status status="PASS" starttime="20211129 14:19:39.748" endtime="20211129 14:19:39.748"/>
 </kw>
-<status status="PASS" starttime="20211129 02:10:18.776" endtime="20211129 02:10:18.777"/>
+<status status="PASS" starttime="20211129 14:19:39.747" endtime="20211129 14:19:39.748"/>
 </kw>
 <kw name="Creating Readingtip" library="resource">
 <arg>Kirjanen</arg>
 <kw name="Input Add Command" library="resource">
 <kw name="Input" library="ReadingtipLibrary">
 <arg>a</arg>
-<status status="PASS" starttime="20211129 02:10:18.777" endtime="20211129 02:10:18.777"/>
+<status status="PASS" starttime="20211129 14:19:39.749" endtime="20211129 14:19:39.749"/>
 </kw>
-<status status="PASS" starttime="20211129 02:10:18.777" endtime="20211129 02:10:18.778"/>
+<status status="PASS" starttime="20211129 14:19:39.749" endtime="20211129 14:19:39.749"/>
 </kw>
 <kw name="Input" library="ReadingtipLibrary">
 <arg>${readingtip}</arg>
-<status status="PASS" starttime="20211129 02:10:18.778" endtime="20211129 02:10:18.778"/>
+<status status="PASS" starttime="20211129 14:19:39.749" endtime="20211129 14:19:39.749"/>
 </kw>
 <kw name="Run Application" library="ReadingtipLibrary">
-<status status="PASS" starttime="20211129 02:10:18.778" endtime="20211129 02:10:18.778"/>
+<status status="PASS" starttime="20211129 14:19:39.749" endtime="20211129 14:19:39.749"/>
 </kw>
-<status status="PASS" starttime="20211129 02:10:18.777" endtime="20211129 02:10:18.778"/>
+<status status="PASS" starttime="20211129 14:19:39.748" endtime="20211129 14:19:39.749"/>
 </kw>
 <kw name="Input Clear Command" library="resource">
 <kw name="Input" library="ReadingtipLibrary">
 <arg>c</arg>
-<status status="PASS" starttime="20211129 02:10:18.778" endtime="20211129 02:10:18.778"/>
+<status status="PASS" starttime="20211129 14:19:39.750" endtime="20211129 14:19:39.750"/>
 </kw>
-<status status="PASS" starttime="20211129 02:10:18.778" endtime="20211129 02:10:18.778"/>
+<status status="PASS" starttime="20211129 14:19:39.750" endtime="20211129 14:19:39.750"/>
 </kw>
+<kw name="Application Runs With Given Commands" library="resource">
 <kw name="Run Application" library="ReadingtipLibrary">
-<status status="PASS" starttime="20211129 02:10:18.779" endtime="20211129 02:10:18.779"/>
+<status status="PASS" starttime="20211129 14:19:39.750" endtime="20211129 14:19:39.751"/>
+</kw>
+<status status="PASS" starttime="20211129 14:19:39.750" endtime="20211129 14:19:39.751"/>
 </kw>
 <kw name="Database Must Be Empty" library="ReadingtipLibrary">
-<status status="PASS" starttime="20211129 02:10:18.779" endtime="20211129 02:10:18.779"/>
+<status status="PASS" starttime="20211129 14:19:39.751" endtime="20211129 14:19:39.751"/>
 </kw>
-<status status="PASS" starttime="20211129 02:10:18.774" endtime="20211129 02:10:18.779"/>
+<status status="PASS" starttime="20211129 14:19:39.746" endtime="20211129 14:19:39.751"/>
 </test>
-<status status="PASS" starttime="20211129 02:10:18.763" endtime="20211129 02:10:18.780"/>
+<test id="s1-s1-t4" name="Insert Invalid Command">
+<kw name="Input" library="ReadingtipLibrary">
+<arg>virheellinenkomento</arg>
+<status status="PASS" starttime="20211129 14:19:39.752" endtime="20211129 14:19:39.752"/>
+</kw>
+<kw name="Application Runs With Given Commands" library="resource">
+<kw name="Run Application" library="ReadingtipLibrary">
+<status status="PASS" starttime="20211129 14:19:39.752" endtime="20211129 14:19:39.752"/>
+</kw>
+<status status="PASS" starttime="20211129 14:19:39.752" endtime="20211129 14:19:39.752"/>
+</kw>
+<kw name="Last Output Should Contain" library="ReadingtipLibrary">
+<arg>command not found</arg>
+<status status="PASS" starttime="20211129 14:19:39.753" endtime="20211129 14:19:39.753"/>
+</kw>
+<status status="PASS" starttime="20211129 14:19:39.752" endtime="20211129 14:19:39.753"/>
+</test>
+<status status="PASS" starttime="20211129 14:19:39.735" endtime="20211129 14:19:39.753"/>
 </suite>
-<status status="PASS" starttime="20211129 02:10:18.747" endtime="20211129 02:10:18.780"/>
+<status status="PASS" starttime="20211129 14:19:39.720" endtime="20211129 14:19:39.754"/>
 </suite>
 <statistics>
 <total>
-<stat pass="3" fail="0" skip="0">All Tests</stat>
+<stat pass="4" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="3" fail="0" skip="0" id="s1" name="Tests">Tests</stat>
-<stat pass="3" fail="0" skip="0" id="s1-s1" name="Insertion">Tests.Insertion</stat>
+<stat pass="4" fail="0" skip="0" id="s1" name="Tests">Tests</stat>
+<stat pass="4" fail="0" skip="0" id="s1-s1" name="Insertion">Tests.Insertion</stat>
 </suite>
 </statistics>
 <errors>
