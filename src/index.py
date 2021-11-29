@@ -9,8 +9,8 @@ def main():
 
     returns: 0
     """
-    db = DatabaseInterface()
-    program_ui = UI(db)
+    data_base = DatabaseInterface()
+    program_ui = UI(data_base)
     program_ui.start()
     return 0
 
