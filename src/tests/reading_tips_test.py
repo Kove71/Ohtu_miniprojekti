@@ -10,4 +10,4 @@ class TestTip(unittest.TestCase):
         input 
         """
         tip = ReadingTip("Hello World")
-        self.assertEqual("Hello Wolrd", tip.__str__())
+        self.assertEqual("Hello World", tip.__str__())
