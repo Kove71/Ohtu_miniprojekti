@@ -22,3 +22,10 @@ Creating Readingtip
     Input Add Command
     Input  ${readingtip}
     Run Application
+
+Input Credentials
+    [Arguments]  ${readingtip}
+    Input  ${readingtip}
+
+Application Runs With Given Commands
+    Run Application

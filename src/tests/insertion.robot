@@ -1,25 +1,34 @@
 *** Settings ***
 Resource  resource.robot
-Test Setup  Insert Initial Readingtip
 
 *** Test Cases ***
 
 Insert Readingtip
-    Creating Readingtip  Ylioppilaslehti 2/2018
+    Input Add Command
+    Input Credentials  Ylioppilaslehti 2/2018
+    Application Runs With Given Commands
     Last Output Should Contain  item Ylioppilaslehti 2/2018 added
 
-View All Items When One Readingtip Added 
+View All Items When Two Readingtips Added
+    Input Add Command
+    Input Credentials  Kirjanen
+    Input Add Command
+    Input Credentials  Vakooja ja petturi 
     Input View Command
-    Run Application
-    Last Output Should Contain  item Vakooja ja petturi added
+    Application Runs With Given Commands
+    Last Output Should Contain  Vakooja ja petturi
 
-Readingtip Removal When Two Readingtip Added
+Clear All Readingtips
     Creating Readingtip  Ylioppilaslehti 2/2018
     Creating Readingtip  Kirjanen
     Input Clear Command
-    Run Application
+    Application Runs With Given Commands
     Database Must Be Empty
 
+Insert Invalid Command
+    Input  virheellinenkomento
+    Application Runs With Given Commands
+    Last Output Should Contain  command not found
+
+
 *** Keywords ***
-Insert Initial Readingtip
-    Creating Readingtip   Vakooja ja petturi
