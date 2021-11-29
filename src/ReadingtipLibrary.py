@@ -1,3 +1,6 @@
+"""Hyväksymistestausluokka
+"""
+
 from stub_io import StubIO
 
 class ReadingtipLibrary:
@@ -34,9 +37,14 @@ class ReadingtipLibrary:
         """Tarkistaa viimeisen tulosteen
         """
         if len(self._io.output) > 0:
-            return self._io.output.pop(0)
+            lastoutput = self._io.output.pop()
         else:
-            return ""
+            lastoutput =  ""
+        if lastoutput != value:
+            raise AssertionError(
+                f"{value} is not in {lastoutput}"
+            )
+
 
     def database_must_be_empty(self):
         """Tarkistaa onko tietokanta tyhjä
