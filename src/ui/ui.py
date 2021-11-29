@@ -8,7 +8,7 @@ class UI:
     näyttämään lukuvinkkejä.
     """
 
-    def __init__(self, db: DatabaseInterface):
+    def __init__(self, data_base: DatabaseInterface):
         self._actions = {
             "a": "add a new item",
             "v": "view your items",
@@ -16,7 +16,7 @@ class UI:
             "q": "exit program"
         }
 
-        self.db = db
+        self.db = data_base
 
     def start(self):
         """Käyttöliittymälooppi. Kysyy toimintaa ja kutsuu
