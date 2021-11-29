@@ -11,5 +11,13 @@ class ReadingTip:
         """
         self.description = description
 
+    def type(self):
+        """Metodi joka palauttaa lukuvinkin tyypin,
+        perusluokassa None
+
+        returns: None
+        """
+        return None
+
     def __str__(self):
         return self.description
