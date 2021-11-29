@@ -41,7 +41,7 @@ class ReadingtipLibrary:
     def database_must_be_empty(self):
         """Tarkistaa onko tietokanta tyhjä
         """
-        if len(self._io.db) > 0:
+        if len(self._io.database) > 0:
             raise AssertionError(
                 "Database is not empty"
             )
