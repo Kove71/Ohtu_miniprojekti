@@ -7,3 +7,6 @@ src/entities/__pycache__/
 src/repositories/__pycache__/
 .pytest_cache
 data/**
+log.html
+output.xml
+report.html

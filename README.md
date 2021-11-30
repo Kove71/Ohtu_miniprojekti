@@ -2,7 +2,7 @@
 
 ![GitHub Actions](https://github.com/Kove71/Ohtu_miniprojekti/workflows/CI/badge.svg)
 
-## Käyttöohjeet
+## Asennus- ja käyttöohjeet
 
 
 Ennen ensimmäistä käyttökertaa riippuvuudet tulee asentaa komennolla: 
@@ -16,6 +16,10 @@ poetry run invoke start
 Testaus suoritetaan komennolla:
 ```bash
 poetry run invoke test
+```
+RobotFramework-testit suoritetaan komennolla:
+```bash
+poetry run invoke robot
 ```
 Pylint suoritetaan komennolla:
 ```bash
