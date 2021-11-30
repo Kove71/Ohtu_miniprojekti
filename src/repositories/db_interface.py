@@ -8,30 +8,30 @@ class DatabaseInterface:
     def __init__(self):
         """Luokan konstrukstori
         """
-        self._db = sqlite3.connect(os.path.realpath("") + "/data/lukuvinkit.db")
+        self._db = sqlite3.connect(os.path.realpath("") + "/data/readingtips.db")
         self._db.isolation_level = None
-        sql = "CREATE TABLE IF NOT EXISTS lukuvinkit (id INTEGER PRIMARY KEY, kuvaus TEXT)"
+        sql = "CREATE TABLE IF NOT EXISTS readingtips (id INTEGER PRIMARY KEY, kuvaus TEXT)"
         self._db.execute(sql)
 
-    def add(self, lukuvinkki: ReadingTip):
-        """Ottaa LukuVinkki-olion, lisää tietokantaan
+    def add(self, reading_tip: ReadingTip):
+        """Ottaa ReadingTip-olion, lisää tietokantaan
         """
-        self._db.execute("INSERT INTO lukuvinkit (kuvaus) VALUES (?)", [lukuvinkki.description])
+        self._db.execute("INSERT INTO readingtips (kuvaus) VALUES (?)", [reading_tip.description])
 
     def read(self):
-        """Palauttaa listan LukuVinkki-olioita
+        """Palauttaa listan reading_tip-olioita
         """
-        sql = "SELECT * FROM lukuvinkit"
-        return [ReadingTip(lukuvinkki[1]) for lukuvinkki in self._db.execute(sql).fetchall()]
+        sql = "SELECT * FROM readingtips"
+        return [ReadingTip(reading_tip[1]) for reading_tip in self._db.execute(sql).fetchall()]
 
 
     def clear(self):
         """ Tyhjentää tietokannan
         """
-        self._db.execute("DELETE FROM lukuvinkit")
+        self._db.execute("DELETE FROM readingtips")
         self._db.execute("VACUUM")
 
     def delete(self):
         """Poistaa tietokannan
         """
-        os.remove(os.path.realpath("") + "/data/lukuvinkit.db")
+        os.remove(os.path.realpath("") + "/data/readingtips.db")
