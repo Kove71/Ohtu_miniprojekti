@@ -36,3 +36,4 @@ Tämän jälkeen juurihakemistosta löytyy hakemisto htmlcov/, josta voi katsoa 
 ## Dokumentaatio
 
 - [Backlog](https://docs.google.com/spreadsheets/d/1Av-S8CRkLMrIsAKHgrrVVXugRZbDxyBik0xdSajMxEg)
+- [Definition of done](dokumentaatio/definitionofdone.md)
