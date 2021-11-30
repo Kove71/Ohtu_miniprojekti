@@ -1,6 +1,7 @@
 # Ohtun miniprojekti
 
 ![GitHub Actions](https://github.com/Kove71/Ohtu_miniprojekti/workflows/CI/badge.svg)
+[![codecov](https://codecov.io/gh/Kove71/Ohtu_miniprojekti/branch/main/graph/badge.svg?token=YZAPS40O41)](https://codecov.io/gh/Kove71/Ohtu_miniprojekti)
 
 ## Asennus- ja käyttöohjeet
 
