@@ -1,17 +1,29 @@
+"""Testataan tietokantaluokan toimintaa.
+"""
 import unittest
 from entities.readingtip import ReadingTip
 from repositories.db_interface import DatabaseInterface
 
 class TestDatabaseInterface(unittest.TestCase):
+    """Testiluokka DatabaseInterface-luokalle.
+    """
     def setUp(self):
+        """Alustaa ReadingTip- ja DatabaseInterface-oliot.
+        """
         self.reading_tip = ReadingTip("kirja")
-        self.db = DatabaseInterface()
+        self.database = DatabaseInterface()
 
     def test_add(self):
-        self.db.add(self.reading_tip)
-        self.assertEqual(len(self.db.read()), 1)
+        """Testaa tallentuuko tietokantaan olion tiedot, kun
+        kutstutaan sen add()-metodia.
+        """
+        self.database.add(self.reading_tip)
+        self.assertEqual(len(self.database.read()), 1)
 
     def test_clear(self):
-        self.db.add(self.reading_tip)
-        self.db.clear()
-        self.assertEqual(len(self.db.read()), 0)
+        """Testaa tyhjentyykö tietokanta, kun kutstutaan
+        sen clear()-metodia.
+        """
+        self.database.add(self.reading_tip)
+        self.database.clear()
+        self.assertEqual(len(self.database.read()), 0)

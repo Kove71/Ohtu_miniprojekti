@@ -1,9 +1,11 @@
+# pylint: disable=invalid-name
 """Hyväksymistestausluokka
 """
 
-from stub_io import StubIO
+#Pylint disablettu toistaiseksi
+from stub_io import StubIO # pylint: disable=import-error
 
-class ReadingtipLibrary:
+class ReadingtipLibrary: # pylint: disable=invalid-name
     """Luokka joka vastaa vaatimusten testaamisesta
     """
 

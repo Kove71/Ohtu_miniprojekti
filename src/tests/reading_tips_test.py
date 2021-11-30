@@ -1,19 +1,19 @@
-"""Tests for the class ReadingTip
+"""Testaa ReadingTip-luokkaa
 """
 import unittest
 from entities.readingtip import ReadingTip
 
 class TestTip(unittest.TestCase):
-
+    """Testausluokka ReadintTip-luokalle
+    """
     def test_the_commetnt_is_saveds_as_is(self):
-        """Tests if the class holds the string given to it as
-        input
+        """Testaa säilyttääkö luokka sille annetun syötteen.
         """
         tip = ReadingTip("Hello World")
         self.assertEqual("Hello World", tip.__str__())
 
     def test_base_class_returns_none_type(self):
-        """Tests if the class return it's type as None
+        """Testaa palauttaako luokka tyyppinään None
         """
         tip = ReadingTip("Goodbye World")
         self.assertIsNone(tip.type())

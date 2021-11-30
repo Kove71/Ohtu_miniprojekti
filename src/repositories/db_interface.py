@@ -1,3 +1,6 @@
+"""Vastuussa tietokannan toiminnoista
+"""
+
 import sqlite3
 import os
 from entities.readingtip import ReadingTip
@@ -31,7 +34,8 @@ class DatabaseInterface:
         self._db.execute("DELETE FROM readingtips")
         self._db.execute("VACUUM")
 
-    def delete(self):
+    #pylint disablettu toistaiseksi
+    def delete(self): # pylint: disable=no-self-use
         """Poistaa tietokannan
         """
         os.remove(os.path.realpath("") + "/data/readingtips.db")

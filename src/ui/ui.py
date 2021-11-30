@@ -16,7 +16,7 @@ class UI:
             "q": "exit program"
         }
 
-        self.db = data_base
+        self.database = data_base
 
     def start(self):
         """Käyttöliittymälooppi. Kysyy toimintaa ja kutsuu
@@ -25,7 +25,7 @@ class UI:
         print("Reading tips")
 
         while True:
-            self._print_actions()
+            self.print_actions()
             action = input()
 
             if action == "v":
@@ -33,20 +33,20 @@ class UI:
             elif action == "a":
                 self._add_item()
             elif action == "c":
-                self._clear_db()
+                self._clear_database()
             elif action == "q":
-                self.db.delete()
+                self.database.delete()
                 break
             else:
                 print("\ncommand not found\n")
                 continue
 
-    def _print_actions(self):
+    def print_actions(self):
         """Tulostaa vaihtoehdot
         """
         print("choose action:")
-        for i in self._actions:
-            print(f"\"{i}\": {self._actions[i]}")
+        for key, item in self._actions.items():
+            print(f"\"{key}\": {item}")
 
 
     def _add_item(self):
@@ -54,7 +54,7 @@ class UI:
         """
         description = input("item description: ")
         item = ReadingTip(description)
-        self.db.add(item)
+        self.database.add(item)
 
         print(f"\nitem {item} added \n")
 
@@ -63,12 +63,12 @@ class UI:
         """Näyttää listan lukuvinkit
         """
         print("\nitems: \n")
-        for index, item in enumerate(self.db.read()):
+        for index, item in enumerate(self.database.read()):
             print(f'{index+1}: {item}')
         print("")
 
 
-    def _clear_db(self):
+    def _clear_database(self):
         """Poistaa kaikki lukuvinkit
         """
-        self.db.clear()
+        self.database.clear()
