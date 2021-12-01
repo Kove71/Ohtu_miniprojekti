@@ -13,24 +13,25 @@ class DatabaseInterface:
         """
         self._db = sqlite3.connect(os.path.realpath("") + "/data/readingtips.db")
         self._db.isolation_level = None
-        sql = "CREATE TABLE IF NOT EXISTS readingtips (id INTEGER PRIMARY KEY, kuvaus TEXT)"
+        sql = "CREATE TABLE IF NOT EXISTS readingtips (id INTEGER PRIMARY KEY, name TEXT," \
+              "kuvaus TEXT, type INTEGER, visible INTEGER, read INTEGER)"
         self._db.execute(sql)
 
     def add(self, reading_tip: ReadingTip):
         """Ottaa ReadingTip-olion, lisää tietokantaan
         """
-        self._db.execute("INSERT INTO readingtips (kuvaus) VALUES (?)", [reading_tip.description])
+        self._db.execute("INSERT INTO readingtips (kuvaus, type, visible, read) VALUES (?, 0, 1, 0)", [reading_tip.description])
 
     def read(self):
         """Palauttaa listan reading_tip-olioita
         """
-        sql = "SELECT * FROM readingtips"
+        sql = "SELECT id, kuvaus FROM readingtips WHERE visible"
         return [ReadingTip(reading_tip[1]) for reading_tip in self._db.execute(sql).fetchall()]
 
     def remove_tip(self, index: int):
         """Poistaa yhden lukuvinkin näkyvistä
         """
-        self._db.execute("UPDATE lukuvinkit SET visible = 0 WHERE id = (?)", [index])
+        self._db.execute("UPDATE readingtips SET visible = 0 WHERE id = (?)", [index])
 
     def clear(self):
         """ Tyhjentää tietokannan
