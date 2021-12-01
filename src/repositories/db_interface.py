@@ -17,15 +17,16 @@ class DatabaseInterface:
     def add(self, reading_tip: ReadingTip):
         """Ottaa ReadingTip-olion, lisää tietokantaan
         """
-        self._db.execute("INSERT INTO readingtips (description) VALUES (?)", [reading_tip.description])
+        self._db.execute("INSERT INTO readingtips (description, type, visible, read) VALUES (?, 0, 1, 0)", [reading_tip.description])
 
     def read(self):
         """Palauttaa listan reading_tip-olioita
         """
-        sql = "SELECT * FROM readingtips"
+        sql = "SELECT id, description FROM readingtips WHERE visible"
         return [ReadingTip(reading_tip[1]) for reading_tip in self._db.execute(sql).fetchall()]
 
     def remove_tip(self, index: int):
         """Poistaa yhden lukuvinkin näkyvistä
         """
         self._db.execute("UPDATE readingtips SET visible = 0 WHERE id = (?)", [index])
+
