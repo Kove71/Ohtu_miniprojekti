@@ -27,6 +27,10 @@ class DatabaseInterface:
         sql = "SELECT * FROM readingtips"
         return [ReadingTip(reading_tip[1]) for reading_tip in self._db.execute(sql).fetchall()]
 
+    def remove_tip(self, index: int):
+        """Poistaa yhden lukuvinkin näkyvistä
+        """
+        self._db.execute("UPDATE lukuvinkit SET visible = 0 WHERE id = (?)", [index])
 
     def clear(self):
         """ Tyhjentää tietokannan
