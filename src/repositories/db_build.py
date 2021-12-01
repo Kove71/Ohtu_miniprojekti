@@ -9,14 +9,51 @@ def build_database():
     """
     database_name = "readingtips.db"
     database = get_connection(database_name)
-    sql = '''CREATE TABLE IF NOT EXISTS readingtips (
-        id INTEGER PRIMARY KEY, 
-        name TEXT,
-        description TEXT, 
-        type INTEGER, 
-        visible INTEGER, 
-        read INTEGER)'''
-    database.execute(sql)
+    sql = ['''
+            CREATE TABLE IF NOT EXISTS readingtips (
+            id INTEGER PRIMARY KEY, 
+            name TEXT NOT NULL,
+            description TEXT, 
+            type INTEGER NOT NULL, 
+            visible INTEGER DEFAULT 1, 
+            read INTEGER)
+            ''',
+            
+            '''
+            CREATE TABLE IF NOT EXISTS book (
+            id INTEGER PRIMARY KEY,
+            author TEXT NOT NULL,
+            isbn TEXT,
+            tip_id INTEGER REFERENCES readingtips)
+            ''',
+            
+            '''
+            CREATE TABLE IF NOT EXISTS blog (
+            id INTEGER PRIMARY KEY,
+            title TEXT NOT NULL,
+            author TEXT NOT NULL,
+            url TEXT NOT NULL,
+            tip_id INTEGER REFERENCES readingtips)
+            ''',
+            
+            '''
+            CREATE TABLE IF NOT EXISTS podcast (
+            id INTEGER PRIMARY KEY,
+            episode TEXT NOT NULL,
+            url TEXT,
+            tip_id INTEGER REFERENCES readingtips)
+            ''',
+            
+            '''
+            CREATE TABLE IF NOT EXISTS video (
+            id INTEGER PRIMARY KEY,
+            url TEXT NOT NULL,
+            author TEXT,
+            tip_id INTEGER REFERENCES readingtips)
+            '''
+        ]
+    for command in sql:
+        database.execute(command)
 
 if __name__ == "__main__":
     clear_database()
