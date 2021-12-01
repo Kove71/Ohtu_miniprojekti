@@ -1,8 +1,13 @@
+"""Tyhjentää tietokannan tiedot
+"""
+
 from db_connection import get_connection
 
 TABLE_NAMES = ["readingtips", "book", "blog", "podcast", "video"]
 
 def clear_database():
+    """Metodi tietokantojen tietojen tyhjentämiseen
+    """
     database_name = "readingtips.db"
     database = get_connection(database_name)
     for name in TABLE_NAMES:

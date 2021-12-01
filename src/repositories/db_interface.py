@@ -1,8 +1,6 @@
 """Vastuussa tietokannan toiminnoista
 """
 
-import sqlite3
-import os
 from entities.readingtip import ReadingTip
 from repositories.db_connection import get_connection
 
@@ -29,4 +27,3 @@ class DatabaseInterface:
         """Poistaa yhden lukuvinkin näkyvistä
         """
         self._db.execute("UPDATE readingtips SET visible = 0 WHERE id = (?)", [index])
-

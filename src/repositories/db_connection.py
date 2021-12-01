@@ -1,3 +1,5 @@
+"""Hakee yhteyden tietokantaan
+"""
 import os
 import sqlite3
 

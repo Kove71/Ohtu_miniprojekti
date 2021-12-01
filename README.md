@@ -5,15 +5,26 @@
 
 ## Asennus- ja käyttöohjeet
 
+### Alustus
 
 Ennen ensimmäistä käyttökertaa riippuvuudet tulee asentaa komennolla: 
 ```bash
 poetry install
 ```
+Ennen kuin ohjelma käynnistetään niin tietokantaa tulee alustaa kommennolla:
+```bash
+poetry run invoke build
+```
+
+### Ohjelman suoritus
+
 Ohjelma suoritetaan komennolla:
 ```bash
 poetry run invoke start
 ```
+
+### Ohjelman testaus
+
 Testaus suoritetaan komennolla:
 ```bash
 poetry run invoke test
@@ -32,6 +43,11 @@ poetry run invoke coverage
 ```
 Tämän jälkeen juurihakemistosta löytyy hakemisto htmlcov/, josta voi katsoa raportin.
 
+Tietokanta voidaan myös tyhjentää komennolla:
+```bash
+poetry run invoke clear
+```
+Jonka jälkeen tietokanta tulee taas alustaa, jotta ohjelma toimisi. 
 
 ## Dokumentaatio
 

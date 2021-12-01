@@ -20,10 +20,3 @@ class TestDatabaseInterface(unittest.TestCase):
         self.database.add(self.reading_tip)
         self.assertEqual(len(self.database.read()), 1)
 
-    def test_clear(self):
-        """Testaa tyhjentyykö tietokanta, kun kutstutaan
-        sen clear()-metodia.
-        """
-        self.database.add(self.reading_tip)
-        self.database.clear()
-        self.assertEqual(len(self.database.read()), 0)
