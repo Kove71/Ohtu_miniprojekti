@@ -12,7 +12,7 @@ class UI:
         self._actions = {
             "a": "add a new item",
             "v": "view your items",
-            "c": "clear an item",
+            "r": "remove an item",
             "q": "exit program"
         }
 
@@ -32,10 +32,9 @@ class UI:
                 self._view_items()
             elif action == "a":
                 self._add_item()
-            elif action == "c":
+            elif action == "r":
                 self._remove_item()
             elif action == "q":
-                self.database.delete()
                 break
             else:
                 print("\ncommand not found\n")
@@ -78,7 +77,3 @@ class UI:
         
         self.database.remove_tip(index)
 
-    def _clear_database(self):
-        """Poistaa kaikki lukuvinkit
-        """
-        self.database.clear()
