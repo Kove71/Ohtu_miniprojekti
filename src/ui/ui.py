@@ -12,7 +12,7 @@ class UI:
         self._actions = {
             "a": "add a new item",
             "v": "view your items",
-            "c": "clear all items",
+            "c": "clear an item",
             "q": "exit program"
         }
 
@@ -33,7 +33,7 @@ class UI:
             elif action == "a":
                 self._add_item()
             elif action == "c":
-                self._clear_database()
+                self._remove_item()
             elif action == "q":
                 self.database.delete()
                 break
@@ -67,6 +67,16 @@ class UI:
             print(f'{index+1}: {item}')
         print("")
 
+    def _remove_item(self):
+        """Poistaa yhden lukuvinkin
+        """
+        try:
+            index = int(input("Clear which item?\n"))
+        except:
+            print("Invalid selection")
+            return
+        
+        self.database.remove_tip(index)
 
     def _clear_database(self):
         """Poistaa kaikki lukuvinkit
