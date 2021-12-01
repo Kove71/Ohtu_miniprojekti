@@ -1,38 +1,42 @@
-CREATE TABLE if not exists readingtips (
-    id INTEGER PRIMARY KEY,
-    name TEXT,
-    description TEXT,
-    type TEXT,
-    visible BOOLEAN,
-    read BOOLEAN,
-    time_of_creation TIMESTAMP
-);
+'''
+CREATE TABLE IF NOT EXISTS readingtips (
+    id INTEGER PRIMARY KEY, 
+    name TEXT NOT NULL,
+    description TEXT, 
+    type INTEGER NOT NULL, 
+    visible INTEGER DEFAULT 1, 
+    read INTEGER)
+''',
 
-CREATE TABLE if not exists book (
+'''
+CREATE TABLE IF NOT EXISTS book (
     id INTEGER PRIMARY KEY,
-    author TEXT,
+    author TEXT NOT NULL,
     isbn TEXT,
-    tip_id INTEGER REFERENCES readintips
-);
+    tip_id INTEGER REFERENCES readingtips)
+''',
 
-CREATE TABLE if not exists blog (
+'''
+CREATE TABLE IF NOT EXISTS blog (
     id INTEGER PRIMARY KEY,
-    title TEXT,
+    title TEXT NOT NULL,
+    author TEXT NOT NULL,
+    url TEXT NOT NULL,
+    tip_id INTEGER REFERENCES readingtips)
+''',
+
+'''
+CREATE TABLE IF NOT EXISTS podcast (
+    id INTEGER PRIMARY KEY,
+    episode TEXT NOT NULL,
+    url TEXT,
+    tip_id INTEGER REFERENCES readingtips)
+''',
+
+'''
+CREATE TABLE IF NOT EXISTS video (
+    id INTEGER PRIMARY KEY,
+    url TEXT NOT NULL,
     author TEXT,
-    url TEXT,
-    tip_id INTEGER REFERENCES readintips
-); 
- 
-CREATE TABLE if not exists podcast (
-    id INTEGER PRIMARY KEY,
-    episode TEXT,
-    url TEXT,
-    tip_id INTEGER REFERENCES readintips
-); 
- 
-CREATE TABLE if not exists video ( 
-    id INTEGER PRIMARY KEY,
-    url TEXT,
-    author TEXT,
-    tip_id INTEGER REFERENCES readintips
-);
+    tip_id INTEGER REFERENCES readingtips)
+'''

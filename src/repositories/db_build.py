@@ -12,9 +12,9 @@ def build_database():
     sql = ['''
             CREATE TABLE IF NOT EXISTS readingtips (
             id INTEGER PRIMARY KEY, 
-            name TEXT NOT NULL,
+            name TEXT,
             description TEXT, 
-            type INTEGER NOT NULL, 
+            type INTEGER, 
             visible INTEGER DEFAULT 1, 
             read INTEGER)
             ''',
