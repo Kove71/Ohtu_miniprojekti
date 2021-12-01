@@ -4,6 +4,7 @@
 import sqlite3
 import os
 from entities.readingtip import ReadingTip
+from repositories.db_connection import get_connection
 
 class DatabaseInterface:
     """Luokka joka vastaa tietokannasta
@@ -11,8 +12,7 @@ class DatabaseInterface:
     def __init__(self):
         """Luokan konstrukstori
         """
-        self._db = sqlite3.connect(os.path.realpath("") + "/data/readingtips.db")
-        self._db.isolation_level = None
+        self._db = get_connection("readingtips.db")
         sql = "CREATE TABLE IF NOT EXISTS readingtips (id INTEGER PRIMARY KEY, kuvaus TEXT)"
         self._db.execute(sql)
 
