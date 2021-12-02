@@ -9,12 +9,37 @@ def build_database():
     """
     database_name = "readingtips.db"
     database = get_connection(database_name)
-    sql = ['''
+    sql = ['''CREATE TABLE IF NOT EXISTS types (
+            id INTEGER PRIMARY KEY,
+            type TEXT)
+            ''',
+
+            '''
+            INSERT INTO types (type)
+            VALUES ("book")
+            ''',
+
+            '''
+            INSERT INTO types (type)
+            VALUES ("blog")
+            ''',
+
+            '''
+            INSERT INTO types (type)
+            VALUES ("podcast")
+            ''',
+
+            '''
+            INSERT INTO types (type)
+            VALUES ("video")
+            ''',
+
+            '''
             CREATE TABLE IF NOT EXISTS readingtips (
             id INTEGER PRIMARY KEY, 
             name TEXT,
             description TEXT, 
-            type INTEGER, 
+            type INTEGER REFERENCES types, 
             visible INTEGER DEFAULT 1, 
             read INTEGER)
             ''',
