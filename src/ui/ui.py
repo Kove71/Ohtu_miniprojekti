@@ -1,6 +1,7 @@
 """Yksinkertainen tekstikäyttöliittymä.
 """
 from entities.readingtip import ReadingTip
+from entities.book import Book
 from repositories.db_interface import DatabaseInterface
 from ui.console_io import ConsoleIO
 
@@ -19,6 +20,13 @@ class UI:
             "r": "remove an item",
             "q": "exit program"
         }
+        self._types = {
+            "1": "add book",
+            "2": "add blog",
+            "3": "add podcast",
+            "4": "add video"
+        }
+
         self._io = console_io
         self.database = database
 
@@ -55,9 +63,46 @@ class UI:
     def _add_item(self):
         """Kysyy lukuvinkin tiedot ja lisää sen listaan
         """
-        description = self._io.read("item description: ")
-        item = ReadingTip(description)
-        self.database.add(item)
+        self.print_types()
+
+        type = self._io.read("selected type: ")
+        self.handle_type_command(type)
+
+
+#        description = self._io.read("item description: ")
+#        item = ReadingTip(description)
+#        self.database.add(item)
+
+#        self._io.write(f"\nitem {item} added \n")
+
+    def print_types(self):
+        """Kysyy lukuvinkin tyyppiä
+       """
+        self._io.write("\nwhich type you want to add?")
+        for key, item in self._types.items():
+           self._io.write((f"\"{key}\": {item}"))
+
+
+    def handle_type_command(self, type):
+        """Käsittelee lukuvinkin tyypin ja kysyy tarvittavat tiedot
+        """
+        if type == "1":
+            self._ask_book()
+        if type == "2":
+            self._ask_blog()
+        if type == "3":
+            self._ask_podcast()
+        if type == "4":
+            self._ask_video()
+
+    def _ask_book(self):
+        name = self._io.read("name of the book (mandatory) :")
+        author = self._io.read("author (mandatory): ")
+        isbn = self._io.read("ISBN (voluntary): ")
+        description = self._io.read("description (voluntary): ")
+
+        item = Book(name, author, isbn, description)
+        self.database.add_book(item)
 
         self._io.write(f"\nitem {item} added \n")
 

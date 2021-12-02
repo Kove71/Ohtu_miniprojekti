@@ -1,6 +1,6 @@
 '''
 CREATE TABLE IF NOT EXISTS readingtips (
-    id INTEGER PRIMARY KEY, 
+    id SERIAL INTEGER PRIMARY KEY, 
     name TEXT NOT NULL,
     description TEXT, 
     type INTEGER NOT NULL, 
@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS readingtips (
 
 '''
 CREATE TABLE IF NOT EXISTS book (
-    id INTEGER PRIMARY KEY,
+    id SERIAL INTEGER PRIMARY KEY,
     author TEXT NOT NULL,
     isbn TEXT,
     tip_id INTEGER REFERENCES readingtips)
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS book (
 
 '''
 CREATE TABLE IF NOT EXISTS blog (
-    id INTEGER PRIMARY KEY,
+    id SERIAL INTEGER PRIMARY KEY,
     title TEXT NOT NULL,
     author TEXT NOT NULL,
     url TEXT NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS blog (
 
 '''
 CREATE TABLE IF NOT EXISTS podcast (
-    id INTEGER PRIMARY KEY,
+    id SERIAL INTEGER PRIMARY KEY,
     episode TEXT NOT NULL,
     url TEXT,
     tip_id INTEGER REFERENCES readingtips)
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS podcast (
 
 '''
 CREATE TABLE IF NOT EXISTS video (
-    id INTEGER PRIMARY KEY,
+    id SERIAL INTEGER PRIMARY KEY,
     url TEXT NOT NULL,
     author TEXT,
     tip_id INTEGER REFERENCES readingtips)
