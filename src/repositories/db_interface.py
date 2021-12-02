@@ -1,8 +1,7 @@
 """Vastuussa tietokannan toiminnoista
 """
-
 from entities.readingtip import ReadingTip
-from repositories.db_connection import get_connection
+from db_connection import get_connection
 
 class DatabaseInterface:
     """Luokka joka vastaa tietokannasta

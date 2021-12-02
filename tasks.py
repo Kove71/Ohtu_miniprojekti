@@ -22,8 +22,8 @@ def robot(ctx):
 
 @task
 def build(ctx):
-    ctx.run("python3 src/repositories/db_build.py")
+    ctx.run("python3 src/db_build.py")
 
 @task
 def clear(ctx):
-    ctx.run("python3 src/repositories/db_clear.py")
+    ctx.run("python3 src/db_clear.py")
