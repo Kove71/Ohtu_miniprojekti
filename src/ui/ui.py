@@ -1,6 +1,7 @@
 """Yksinkertainen tekstikäyttöliittymä.
 """
 from entities.readingtip import ReadingTip
+from entities.blog import Blog
 from entities.book import Book
 from repositories.db_interface import DatabaseInterface
 from ui.console_io import ConsoleIO
@@ -69,12 +70,6 @@ class UI:
         self.handle_type_command(type)
 
 
-#        description = self._io.read("item description: ")
-#        item = ReadingTip(description)
-#        self.database.add(item)
-
-#        self._io.write(f"\nitem {item} added \n")
-
     def print_types(self):
         """Kysyy lukuvinkin tyyppiä
        """
@@ -96,7 +91,7 @@ class UI:
             self._ask_video()
 
     def _ask_book(self):
-        name = self._io.read("name of the book (mandatory) :")
+        name = self._io.read("name of the book (mandatory): ")
         author = self._io.read("author (mandatory): ")
         isbn = self._io.read("ISBN (voluntary): ")
         description = self._io.read("description (voluntary): ")
@@ -106,6 +101,25 @@ class UI:
 
         self._io.write(f"\nitem {item} added \n")
 
+    def _ask_blog(self):
+        name = self._io.read("name of the blog (mandatory): ")
+        author = self._io.read("author(mandatory): ")
+        url = self._io.read("url (mandatory): ")
+        title = self._io.read("title of blogpost (voluntary): ")
+        description = self._io.read("description (voluntary): ")
+
+        item = Blog(name, author, url, title, description)
+        self.database.add_blog(item)
+
+        self._io.write(f"\nitem {item} added \n")
+
+    def _ask_podcast(self):
+        #kesken
+        pass
+
+    def _ask_video(self):
+        #Kesken
+        pass
 
     def _view_items(self):
         """Näyttää listan lukuvinkit
