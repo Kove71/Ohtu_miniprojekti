@@ -20,6 +20,7 @@ class UI:
         self._actions = {
             "a": "add a new item",
             "v": "view your items",
+            "m": "mark item as read",
             "r": "remove an item",
             "q": "exit program"
         }
@@ -47,6 +48,8 @@ class UI:
                 self._view_items()
             elif action == "a":
                 self._add_item()
+            elif action == "m":
+                self._mark_item_as_read()
             elif action == "r":
                 self._remove_item()
             elif action == "q":
@@ -71,6 +74,13 @@ class UI:
         type = self._io.read("selected type: ")
         self.handle_type_command(type)
 
+    def _mark_item_as_read(self):
+        """Kysyy lukuvinkin indeksin ja merkkaa luetuksi
+        """
+        selection = int(self._io.read("\nmark which item as read?\n"))
+        self.database.mark_as_read(selection)
+
+        self._io.write("\ndone")
 
     def print_types(self):
         """Kysyy lukuvinkin tyyppiä

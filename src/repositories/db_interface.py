@@ -1,5 +1,6 @@
 """Vastuussa tietokannan toiminnoista
 """
+import datetime
 from entities.blog import Blog
 from entities.book import Book
 from entities.podcast import Podcast
@@ -67,6 +68,9 @@ class DatabaseInterface:
             item_name = item[1]
             item_description = item[2]
             item_type = item[3]
+            item_read = item[5]
+            if item_read == 0:
+                item_read = "no"
 
             if item_type == 1:
                 book_info = self._db.execute("SELECT * FROM book WHERE tip_id = (?)", [item_id]).fetchone()
@@ -74,7 +78,7 @@ class DatabaseInterface:
                 isbn = book_info[2]
 
                 book = Book(item_name, author, isbn, item_description)
-                found_reading_tips.append(f'{item_id}: Book: {str(book)}')
+                found_reading_tips.append(f'{item_id}: Book: {str(book)}, read: {item_read}')
 
             if item_type == 2:
                 blog_info = self._db.execute("SELECT * FROM blog WHERE tip_id = (?)", [item_id]).fetchone()
@@ -83,7 +87,7 @@ class DatabaseInterface:
                 url = blog_info[3]
 
                 blog = Blog(item_name, author, url, title, item_description)
-                found_reading_tips.append(f'{item_id}: Blog: {str(blog)}')
+                found_reading_tips.append(f'{item_id}: Blog: {str(blog)}, read: {item_read}')
 
             if item_type == 3:
                 podcast_info = self._db.execute("SELECT * FROM podcast WHERE tip_id = (?)", [item_id]).fetchone()
@@ -91,7 +95,7 @@ class DatabaseInterface:
                 url = podcast_info[2]
 
                 podcast = Podcast(item_name, episode, url, item_description)
-                found_reading_tips.append(f'{item_id}: Podcast: {str(podcast)}')
+                found_reading_tips.append(f'{item_id}: Podcast: {str(podcast)}, read: {item_read}')
 
             if item_type == 4:
                 video_info = self._db.execute("SELECT * FROM video WHERE tip_id = (?)", [item_id]).fetchone()
@@ -99,7 +103,7 @@ class DatabaseInterface:
                 channel = video_info[2]
 
                 video = Video(item_name, url, channel, item_description)
-                found_reading_tips.append(f'{item_id}: Video: {str(video)}')
+                found_reading_tips.append(f'{item_id}: Video: {str(video)}, read: {item_read}')
 
 
         return found_reading_tips
@@ -108,3 +112,14 @@ class DatabaseInterface:
         """Poistaa yhden lukuvinkin näkyvistä
         """
         self._db.execute("UPDATE readingtips SET visible = 0 WHERE id = (?)", [index])
+
+    def mark_as_read(self, index: int):
+        """Lisää lukuvinkkiin aikaleiman
+        """
+        date = datetime.datetime.now()
+        year = f'{date.year}'
+        month = f'{date.month:02d}'
+        day = f'{date.day:02d}'
+        timestamp = f'{year}-{month}-{day}'
+
+        self._db.execute("UPDATE readingtips SET read = (?) WHERE id = (?)", [timestamp, index])
