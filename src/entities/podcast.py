@@ -13,5 +13,5 @@ class Podcast:
         self.description = description
 
     def __str__(self):
-        return f'{self.name}: episode "{self.episode}"'
+        return f'{self.name} - {self.episode}'
         
