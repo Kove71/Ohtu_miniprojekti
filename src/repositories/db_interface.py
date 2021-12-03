@@ -57,10 +57,52 @@ class DatabaseInterface:
 
 
     def read(self):
-        """Palauttaa listan reading_tip-olioita
+        """Palauttaa listan merkkijonoesityksiä olioista
         """
-        sql = "SELECT id, name FROM readingtips WHERE visible"
-        return [ReadingTip(reading_tip[1]) for reading_tip in self._db.execute(sql).fetchall()]
+        found_reading_tips = []
+        items = self._db.execute("SELECT * FROM readingtips WHERE visible").fetchall()
+        
+        for item in items:
+            item_id = item[0]
+            item_name = item[1]
+            item_description = item[2]
+            item_type = item[3]
+
+            if item_type == 1:
+                book_info = self._db.execute("SELECT * FROM book WHERE tip_id = (?)", [item_id]).fetchone()
+                author = book_info[1]
+                isbn = book_info[2]
+
+                book = Book(item_name, author, isbn, item_description)
+                found_reading_tips.append(f'{item_id}: Book: {str(book)}')
+
+            if item_type == 2:
+                blog_info = self._db.execute("SELECT * FROM blog WHERE tip_id = (?)", [item_id]).fetchone()
+                title = blog_info[1]
+                author = blog_info[2]
+                url = blog_info[3]
+
+                blog = Blog(item_name, author, url, title, item_description)
+                found_reading_tips.append(f'{item_id}: Blog: {str(blog)}')
+
+            if item_type == 3:
+                podcast_info = self._db.execute("SELECT * FROM podcast WHERE tip_id = (?)", [item_id]).fetchone()
+                episode = podcast_info[1]
+                url = podcast_info[2]
+
+                podcast = Podcast(item_name, episode, url, item_description)
+                found_reading_tips.append(f'{item_id}: Podcast: {str(podcast)}')
+
+            if item_type == 4:
+                video_info = self._db.execute("SELECT * FROM video WHERE tip_id = (?)", [item_id]).fetchone()
+                url = video_info[1]
+                channel = video_info[2]
+
+                video = Video(item_name, url, channel, item_description)
+                found_reading_tips.append(f'{item_id}: Video: {str(video)}')
+
+
+        return found_reading_tips
 
     def remove_tip(self, index: int):
         """Poistaa yhden lukuvinkin näkyvistä

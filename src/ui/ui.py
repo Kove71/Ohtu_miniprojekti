@@ -154,8 +154,8 @@ class UI:
         """Näyttää listan lukuvinkit
         """
         self._io.write("\nitems: \n")
-        for index, item in enumerate(self.database.read()):
-            self._io.write(f'{index+1}: {item}')
+        for item in self.database.read():
+            self._io.write(item)
 
 
     def _remove_item(self):
