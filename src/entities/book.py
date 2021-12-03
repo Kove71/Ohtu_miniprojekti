@@ -13,4 +13,4 @@ class Book:
         self.description = description or None
 
     def __str__(self):
-        return self.name + " " + self.author + " " + self.isbn
+        return f'{self.author}: "{self.name}"'

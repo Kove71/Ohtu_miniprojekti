@@ -2,6 +2,8 @@
 """
 from entities.blog import Blog
 from entities.book import Book
+from entities.podcast import Podcast
+from entities.video import Video
 from entities.readingtip import ReadingTip
 from db_connection import get_connection
 
@@ -34,6 +36,25 @@ class DatabaseInterface:
         result = self._db.execute("SELECT rowid from readingtips order by ROWID DESC limit 1")
         blog_id = result.fetchone()[0]
         self._db.execute("INSERT INTO blog (title, author, url, tip_id) VALUES (:title, :author, :url, :tip_id)",{"title":blog.title, "author":blog.author, "url":blog.url, "tip_id":blog_id})
+
+    def add_podcast(self, podcast: Podcast):
+        """Ottaa Podcast-olion ja lisää tietokantaan
+        """
+        sql = "INSERT INTO readingtips (name, description, type, read) VALUES (:name, :description, :type, :read)"
+        self._db.execute(sql, {"name":podcast.name, "description":podcast.description, "type":3, "read":0})
+        result = self._db.execute("SELECT rowid from readingtips order by ROWID DESC limit 1")
+        podcast_id = result.fetchone()[0]
+        self._db.execute("INSERT INTO podcast (episode, url, tip_id) VALUES (:episode, :url, :tip_id)",{"episode":podcast.episode, "url":podcast.url, "tip_id":podcast_id})
+
+    def add_video(self, video: Video):
+        """Ottaa Video-olion ja lisää tietokantaan
+        """
+        sql = "INSERT INTO readingtips (name, description, type, read) VALUES (:name, :description, :type, :read)"
+        self._db.execute(sql, {"name":video.name, "description":video.description, "type":4, "read":0})
+        result = self._db.execute("SELECT rowid from readingtips order by ROWID DESC limit 1")
+        video_id = result.fetchone()[0]
+        self._db.execute("INSERT INTO video (url, author, tip_id) VALUES (:url, :author, :tip_id)",{"url":video.url, "author":video.channel, "tip_id":video_id})
+
 
     def read(self):
         """Palauttaa listan reading_tip-olioita

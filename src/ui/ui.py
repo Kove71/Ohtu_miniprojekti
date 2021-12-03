@@ -3,6 +3,8 @@
 from entities.readingtip import ReadingTip
 from entities.blog import Blog
 from entities.book import Book
+from entities.podcast import Podcast
+from entities.video import Video
 from repositories.db_interface import DatabaseInterface
 from ui.console_io import ConsoleIO
 
@@ -114,12 +116,39 @@ class UI:
         self._io.write(f"\nitem {item} added \n")
 
     def _ask_podcast(self):
-        #kesken
-        pass
+        name = ""
+        while name == "":
+            name = self._io.read("name of podcast (mandatory): ")
+        
+        episode = ""
+        while episode == "":
+            episode = self._io.read("name of episode (mandatory): ")
+        
+        url = self._io.read("url (voluntary): ")
+        description = self._io.read("description (voluntary): ")
+
+        podcast = Podcast(name, episode, url, description)
+        self.database.add_podcast(podcast)
+
+        self._io.write(f"\nitem {podcast} added\n")
 
     def _ask_video(self):
-        #Kesken
-        pass
+        name = ""
+        while name == "":
+            name = self._io.read("name of video (mandatory): ")
+        
+        url = ""
+        while url == "":
+            url = self._io.read("url (mandatory): ")
+        
+        channel = self._io.read("name of channel (voluntary): ")
+        description = self._io.read("description (voluntary): ")
+
+        video = Video(name, url, channel, description)
+        self.database.add_video(video)
+
+        self._io.write(f"\nitem {video} added\n")
+
 
     def _view_items(self):
         """Näyttää listan lukuvinkit
