@@ -1,6 +1,5 @@
 """Yksinkertainen tekstikäyttöliittymä.
 """
-from entities.readingtip import ReadingTip
 from entities.blog import Blog
 from entities.book import Book
 from entities.podcast import Podcast
@@ -13,7 +12,7 @@ class UI:
     näyttämään lukuvinkkejä.
     Args:
         data: tietokanta
-        console_io: io 
+        console_io: io
     """
 
     def __init__(self, database: DatabaseInterface, console_io: ConsoleIO):
@@ -71,8 +70,8 @@ class UI:
         """
         self.print_types()
 
-        type = self._io.read("selected type: ")
-        self.handle_type_command(type)
+        selection = self._io.read("selected type: ")
+        self.handle_type_command(selection)
 
     def _mark_item_as_read(self):
         """Kysyy lukuvinkin indeksin ja merkkaa luetuksi
@@ -87,19 +86,19 @@ class UI:
        """
         self._io.write("\nwhich type you want to add?")
         for key, item in self._types.items():
-           self._io.write((f"\"{key}\": {item}"))
+            self._io.write((f"\"{key}\": {item}"))
 
 
-    def handle_type_command(self, type):
+    def handle_type_command(self, tip_type):
         """Käsittelee lukuvinkin tyypin ja kysyy tarvittavat tiedot
         """
-        if type == "1":
+        if tip_type == "1":
             self._ask_book()
-        if type == "2":
+        if tip_type == "2":
             self._ask_blog()
-        if type == "3":
+        if tip_type == "3":
             self._ask_podcast()
-        if type == "4":
+        if tip_type == "4":
             self._ask_video()
 
     def _ask_book(self):
@@ -129,11 +128,11 @@ class UI:
         name = ""
         while name == "":
             name = self._io.read("name of podcast (mandatory): ")
-        
+
         episode = ""
         while episode == "":
             episode = self._io.read("name of episode (mandatory): ")
-        
+
         url = self._io.read("url (voluntary): ")
         description = self._io.read("description (voluntary): ")
 
@@ -146,11 +145,11 @@ class UI:
         name = ""
         while name == "":
             name = self._io.read("name of video (mandatory): ")
-        
+
         url = ""
         while url == "":
             url = self._io.read("url (mandatory): ")
-        
+
         channel = self._io.read("name of channel (voluntary): ")
         description = self._io.read("description (voluntary): ")
 
@@ -163,17 +162,18 @@ class UI:
     def _view_items(self):
         """Näyttää listan lukuvinkit
         """
-        type = int(self._io.read("\nview which tips: \n1: book\n2: blog\n3: podcast\n4: video\n5: all\n"))
-        
+        tip_type = int(self._io.read(
+            "\nview which tips: \n1: book\n2: blog\n3: podcast\n4: video\n5: all\n"))
+
         self._io.write("")
-        if type == 5:
+        if tip_type == 5:
             for item in self.database.read():
                 self._io.write(item)
             return
-        
+
         type_helper = ["", "Book:", "Blog:", "Podcast:", "Video:"]
         for item in self.database.read():
-            if item.split()[1] == type_helper[type]:
+            if item.split()[1] == type_helper[tip_type]:
                 self._io.write(item)
 
     def _remove_item(self):
@@ -184,6 +184,5 @@ class UI:
         except:
             self._io.write("Invalid selection")
             return
-        
-        self.database.remove_tip(index)
 
+        self.database.remove_tip(index)

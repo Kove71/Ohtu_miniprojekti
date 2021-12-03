@@ -16,9 +16,6 @@ class DatabaseInterface:
         """
         self._db = get_connection("readingtips.db")
 
-#    def add(self, reading_tip: ReadingTip):
-         #Ottaa ReadingTip-olion, lisää tietokantaan
-#        self._db.execute("INSERT INTO readingtips (description, type, visible, read) VALUES (?, 0, 1, 0)", [reading_tip.description])
 
     def add_book(self, book: Book):
         """Ottaa Book- olion, lisää tietokantaan readingtips ja book-tauluihin kirjan tiedot

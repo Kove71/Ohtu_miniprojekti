@@ -41,7 +41,7 @@ class ReadingtipLibrary: # pylint: disable=invalid-name
         if len(self._io.output) > 0:
             lastoutput = self._io.output.pop()
         else:
-            lastoutput =  ""
+            lastoutput = ""
         if lastoutput != value:
             raise AssertionError(
                 f"{value} is not in {lastoutput}"

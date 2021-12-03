@@ -8,7 +8,7 @@ class StubIO:
         self.outputs = []
 
     def write(self, value):
-        self.outputs.append(value):
+        self.outputs.append(value)
 
     def read(self, prompt):
         if len(self.inputs) > 0:
@@ -17,4 +17,4 @@ class StubIO:
             return ""
 
     def add_input(self, value):
-        self.inputs.append(value):
+        self.inputs.append(value)

@@ -18,7 +18,7 @@ def build_database():
             visible INTEGER DEFAULT 1, 
             read INTEGER)
             ''',
-            
+
             '''
             CREATE TABLE IF NOT EXISTS book (
             id INTEGER PRIMARY KEY,
@@ -26,16 +26,16 @@ def build_database():
             isbn TEXT,
             tip_id INTEGER REFERENCES readingtips)
             ''',
-            
+
             '''
             CREATE TABLE IF NOT EXISTS blog (
             id INTEGER PRIMARY KEY,
-            title TEXT NOT NULL,
+            title TEXT,
             author TEXT NOT NULL,
             url TEXT NOT NULL,
             tip_id INTEGER REFERENCES readingtips)
             ''',
-            
+
             '''
             CREATE TABLE IF NOT EXISTS podcast (
             id INTEGER PRIMARY KEY,
@@ -43,7 +43,7 @@ def build_database():
             url TEXT,
             tip_id INTEGER REFERENCES readingtips)
             ''',
-            
+
             '''
             CREATE TABLE IF NOT EXISTS video (
             id INTEGER PRIMARY KEY,
