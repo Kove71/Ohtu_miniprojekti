@@ -153,10 +153,18 @@ class UI:
     def _view_items(self):
         """Näyttää listan lukuvinkit
         """
-        self._io.write("\nitems: \n")
+        type = int(self._io.read("\nview which tips: \n1: book\n2: blog\n3: podcast\n4: video\n5: all\n"))
+        
+        self._io.write("")
+        if type == 5:
+            for item in self.database.read():
+                self._io.write(item)
+            return
+        
+        type_helper = ["", "Book:", "Blog:", "Podcast:", "Video:"]
         for item in self.database.read():
-            self._io.write(item)
-
+            if item.split()[1] == type_helper[type]:
+                self._io.write(item)
 
     def _remove_item(self):
         """Poistaa yhden lukuvinkin
