@@ -13,8 +13,5 @@ class Podcast:
         self.description = description
 
     def __str__(self):
-        return_string = f'{self.name}: episode "{self.episode}"'
-        if self.url:
-            return_string += f', url: {self.url}'
+        return f'{self.name}: episode "{self.episode}"'
         
-        return return_string

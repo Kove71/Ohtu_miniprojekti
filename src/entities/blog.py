@@ -16,5 +16,9 @@ class Blog:
     def __str__(self):
         """Palauttaa nimen, tekijän ja urlin
         """
-        return self.name + " " + self.author + " " + self.url
+        return_string = f'{self.author}: {self.name}'
+        if self.title != "":
+            return_string += f' - ({self.title})'
+        return_string += f', url: {self.url}'
 
+        return return_string
