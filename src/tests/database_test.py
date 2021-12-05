@@ -3,6 +3,7 @@
 import unittest
 from repositories.db_interface import DatabaseInterface
 from db_build import build_database
+from db_clear import clear_database
 from entities.blog import Blog
 from entities.book import Book
 from entities.podcast import Podcast
@@ -16,14 +17,42 @@ class TestDatabaseInterface(unittest.TestCase):
     def setUp(self):
         """Alustaa ReadingTip- ja DatabaseInterface-oliot.
         """
-        build_database()
+        clear_database()
         self.book = Book("kirja", "aino")
+        self.blog = Blog("blogi", "pekka", "https://...")
+        self.podcast = Podcast("podcast", "5.jakso")
+        self.video = Video("video", "hassu kissa", "https://")
         self.database = DatabaseInterface()
 
     def test_add_book(self):
         """Testaa tallentuuko tietokantaan olion tiedot, kun
         kutstutaan sen add()-metodia.
         """
+        build_database()
         self.database.add_book(self.book)
         self.assertEqual(len(self.database.read()), 1)
+    
+    def test_add_blog(self):
+        build_database()
+        self.database.add_blog(self.blog)
+        self.assertEqual(len(self.database.read()), 1)
+    
+    def test_add_podcast(self):
+        build_database()
+        self.database.add_podcast(self.podcast)
+        print(self.database.read())
+        self.assertEqual(len(self.database.read()), 1)
+    
+    def test_add_video(self):
+        build_database()
+        self.database.add_video(self.video)
+        self.assertEqual(len(self.database.read()), 1)
+    
+    def test_remove_tip(self):
+        build_database()
+        self.database.add_video(self.video)
+        self.database.add_book(self.book)
+        self.assertEqual(len(self.database.read()), 2)
 
+        self.database.remove_tip(1)
+        self.assertEqual(len(self.database.read()), 1)
