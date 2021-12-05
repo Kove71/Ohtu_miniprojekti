@@ -25,30 +25,42 @@ class TestDatabaseInterface(unittest.TestCase):
         self.database = DatabaseInterface()
 
     def test_add_book(self):
-        """Testaa tallentuuko tietokantaan olion tiedot, kun
-        kutstutaan sen add()-metodia.
+        """Testaa tallentuuko tietokantaan Book-olion tiedot, kun
+        kutstutaan sen add_book()-metodia.
         """
         build_database()
         self.database.add_book(self.book)
         self.assertEqual(len(self.database.read()), 1)
-    
+
     def test_add_blog(self):
+        """Testaa tallentuuko tietokantaan Blog-olion tiedot, kun
+        kutstutaan sen add_blog()-metodia.
+        """
         build_database()
         self.database.add_blog(self.blog)
         self.assertEqual(len(self.database.read()), 1)
-    
+
     def test_add_podcast(self):
+        """Testaa tallentuuko tietokantaan Podcast-olion tiedot, kun
+        kutstutaan sen add_podcast()-metodia.
+        """
         build_database()
         self.database.add_podcast(self.podcast)
         print(self.database.read())
         self.assertEqual(len(self.database.read()), 1)
-    
+
     def test_add_video(self):
+        """Testaa tallentuuko tietokantaan Video-olion tiedot, kun
+        kutstutaan sen add_video()-metodia.
+        """
         build_database()
         self.database.add_video(self.video)
         self.assertEqual(len(self.database.read()), 1)
-    
+
     def test_remove_tip(self):
+        """Testaa poistuuko tietokannasta olio, kun kutsutaan 
+        remove_tip-metodia
+        """
         build_database()
         self.database.add_video(self.video)
         self.database.add_book(self.book)
