@@ -7,8 +7,7 @@ def build_database():
     """Alustaa tietokannan taulut
     toistaiseksi vain readingtips
     """
-    database_name = "readingtips.db"
-    database = get_connection(database_name)
+    database = get_connection()
     sql = ['''
             CREATE TABLE IF NOT EXISTS readingtips (
             id INTEGER PRIMARY KEY, 

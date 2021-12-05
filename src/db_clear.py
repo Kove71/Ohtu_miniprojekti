@@ -8,8 +8,7 @@ TABLE_NAMES = ["readingtips", "book", "blog", "podcast", "video"]
 def clear_database():
     """Metodi tietokantojen tietojen tyhjentämiseen
     """
-    database_name = "readingtips.db"
-    database = get_connection(database_name)
+    database = get_connection()
     for name in TABLE_NAMES:
         database.execute(f"DROP TABLE IF EXISTS {name}")
 

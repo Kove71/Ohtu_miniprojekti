@@ -14,7 +14,7 @@ class DatabaseInterface:
     def __init__(self):
         """Luokan konstrukstori
         """
-        self._db = get_connection("readingtips.db")
+        self._db = get_connection()
 
 
     def add_book(self, book: Book):
