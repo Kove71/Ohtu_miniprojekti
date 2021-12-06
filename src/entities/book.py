@@ -19,7 +19,7 @@ class Book:
         string = f"Type: Book\n" \
                 f"Name: {self.name}\n" \
                 f"Author: {self.author}\n" \
-                f"ISBN: {self.isbn if self.isbn is not None else 'Unknown'}" \
+                f"ISBN: {self.isbn if self.isbn is not None else 'Unknown'}\n" \
                 f"Description: {self.description if self.description is not None else 'None'}\n" \
                 f"Read: {'Yes' if self.read else 'No'}\n"
         return string
