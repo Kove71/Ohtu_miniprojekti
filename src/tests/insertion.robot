@@ -3,32 +3,29 @@ Resource  resource.robot
 
 *** Test Cases ***
 
-Insert Readingtip
+Insert Book Readingtip
     Input Add Command
-    Input Credentials  Ylioppilaslehti 2/2018
-    Application Runs With Given Commands
-    Last Output Should Contain  item Ylioppilaslehti 2/2018 added
+    Input Book Type
+    Create New Book  Tuntematon sotilas  Väinö Linna  9789510425459  sotaromaani
+    Output Should Contain  \nitem Type: Book\nName: Tuntematon sotilas\nAuthor: Väinö Linna\nISBN: 9789510425459\nDescription: sotaromaani\nRead: No\n added \n
 
-View All Items When Two Readingtips Added
+Insert Blog Readingtip
     Input Add Command
-    Input Credentials  Kirjanen
+    Input Blog Type
+    Create New Blog  Endorfiineja  Kirsi  https://kirsberry.blogspot.com  Liikuntablogi
+    Output Should Contain  \nitem Type: Blog\nName: Endorfiineja\nAuthor: Kirsi\nTitle: Liikuntablogi\nURL: https://kirsberry.blogspot.com\nDescription: q\nRead: No\n added \n
+
+
+Insert Podcast Readingtip
     Input Add Command
-    Input Credentials  Vakooja ja petturi 
-    Input View Command
-    Application Runs With Given Commands
-    Last Output Should Contain  Vakooja ja petturi
+    Input Podcast Type
+    Create New Podcast  Jäljillä  Jessica Johnson  https://www.spotify.com  Katoamistapausmysteeri
+    Output Should Contain  \nitem Type: Podcast\nName: Jäljillä\nEpisode: Jessica Johnson\nURL: https://www.spotify.com\nDescription: Katoamistapausmysteeri\nRead: No\n added\n
 
-Clear All Readingtips
-    Creating Readingtip  Ylioppilaslehti 2/2018
-    Creating Readingtip  Kirjanen
-    Input Clear Command
-    Application Runs With Given Commands
-    Database Must Be Empty
-
-Insert Invalid Command
-    Input  virheellinenkomento
-    Application Runs With Given Commands
-    Last Output Should Contain  command not found
-
+Insert Video Readingtip
+    Input Add Command
+    Input Video Type
+    Create New Video  How to Tie a Tie  https://www.youtube.com/watch?v=xAg7z6u4NE8  tiehole  how to tie a tie tutorial
+    Output Should Contain  \nitem Type: Video\nName: How to Tie a Tie\nURL: https://www.youtube.com/watch?v=xAg7z6u4NE8\nChannel: tiehole\nDescription: how to tie a tie tutorial\nWatched: No\n added\n
 
 *** Keywords ***
