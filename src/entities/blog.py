@@ -4,7 +4,7 @@
 class Blog:
     """Luokka kuvaa blogityyppistä lukuvinkkiä
     """
-    def __init__(self, name, author, url, title=None, description=None):
+    def __init__(self, name, author, url, title=None, description=None, read=False):
         """
         """
         self.name = name
@@ -13,13 +13,15 @@ class Blog:
         self.title = title
         self.description = description
 
-    def __str__(self):
-        """Palauttaa nimen, tekijän ja urlin
-        """
-        return_string = f'{self.author}: {self.name}'
-        if self.title != "":
-            return_string += f' - ({self.title})'
-        if self.url != "":
-            return_string += f', url: {self.url}'
+        self.read = read
+        self.type = 3
 
-        return return_string
+    def __str__(self):
+        string = f"Type: Blog\n" \
+                f"Name: {self.name}\n" \
+                f"Author: {self.author}\n" \
+                f"Title: {self.title if self.title is not None else 'No title'}"    \
+                f"URL: {self.url if self.url is not None else 'Unknown'}" \
+                f"Description: {self.description if self.description is not None else 'None'}\n" \
+                f"Read: {'Yes' if self.read else 'No'}\n"
+        return string
