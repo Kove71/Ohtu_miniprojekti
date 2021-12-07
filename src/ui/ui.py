@@ -165,8 +165,12 @@ class UI:
     def _view_items(self):
         """Näyttää listan lukuvinkit
         """
-        tip_type = int(self._io.read(
-            "\nview which tips: \n1: book\n2: blog\n3: podcast\n4: video\n5: all\n"))
+        try:
+            tip_type = int(self._io.read(
+                "\nview which tips: \n1: book\n2: blog\n3: podcast\n4: video\n5: all\n"))
+        except:
+            self._io.write("Invalid command")
+            return
 
         self._io.write("")
         if tip_type == 5:
