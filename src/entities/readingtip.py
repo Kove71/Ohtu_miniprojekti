@@ -21,4 +21,4 @@ class ReadingTip:
         return self._type
 
     def __str__(self):
-        return self.description
+        return self.description + "\n"
