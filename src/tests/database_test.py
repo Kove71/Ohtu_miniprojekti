@@ -8,7 +8,6 @@ from entities.blog import Blog
 from entities.book import Book
 from entities.podcast import Podcast
 from entities.video import Video
-from entities.readingtip import ReadingTip
 
 
 class TestDatabaseInterface(unittest.TestCase):
@@ -58,7 +57,7 @@ class TestDatabaseInterface(unittest.TestCase):
         self.assertEqual(len(self.database.read()), 1)
 
     def test_remove_tip(self):
-        """Testaa poistuuko tietokannasta olio, kun kutsutaan 
+        """Testaa poistuuko tietokannasta olio, kun kutsutaan
         remove_tip-metodia
         """
         build_database()
@@ -68,8 +67,11 @@ class TestDatabaseInterface(unittest.TestCase):
 
         self.database.remove_tip(1)
         self.assertEqual(len(self.database.read()), 1)
-    
+
     def test_mark_as_read(self):
+        """Testaa merkkaako tietokannan metodi mark_as_read
+        lukuvinkin luetuksi
+        """
         build_database()
         self.database.add_book(self.book)
         self.assertEqual(self.database.mark_as_read(1), True)
