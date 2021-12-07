@@ -68,3 +68,8 @@ class TestDatabaseInterface(unittest.TestCase):
 
         self.database.remove_tip(1)
         self.assertEqual(len(self.database.read()), 1)
+    
+    def test_mark_as_read(self):
+        build_database()
+        self.database.add_book(self.book)
+        self.assertEqual(self.database.mark_as_read(1), True)

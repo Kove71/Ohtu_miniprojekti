@@ -120,3 +120,5 @@ class DatabaseInterface:
         timestamp = f'{year}-{month}-{day}'
 
         self._db.execute("UPDATE readingtips SET read = (?) WHERE id = (?)", [timestamp, index])
+
+        return True
