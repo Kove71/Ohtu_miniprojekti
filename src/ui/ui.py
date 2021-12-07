@@ -76,7 +76,10 @@ class UI:
     def _mark_item_as_read(self):
         """Kysyy lukuvinkin indeksin ja merkkaa luetuksi
         """
-        selection = int(self._io.read("\nmark which item as read?\n"))
+        for item in self.database.read():
+            self._io.write(item)
+
+        selection = int(self._io.read("\nmark which item as read?(Item number)\n"))
         self.database.mark_as_read(selection)
 
         self._io.write("\ndone")
@@ -179,8 +182,11 @@ class UI:
     def _remove_item(self):
         """Poistaa yhden lukuvinkin
         """
+        for item in self.database.read():
+            self._io.write(item)
+
         try:
-            index = int(self._io.read("Clear which item?\n"))
+            index = int(self._io.read("\nClear which item?(Item number)\n"))
         except:
             self._io.write("Invalid selection")
             return
