@@ -4,13 +4,15 @@
 from ui.ui import UI
 from ui.console_io import ConsoleIO
 from repositories.db_interface import DatabaseInterface
+from services.readingtip_service import ReadingtipService
 
 def main():
     """Ohjelman päämetodi. Luo käyttöliittymän.
     """
     console_io = ConsoleIO
-    data_base = DatabaseInterface()
-    program_ui = UI(data_base, console_io)
+    database = DatabaseInterface()
+    service = ReadingtipService(database)
+    program_ui = UI(console_io, service)
     program_ui.start()
 
 if __name__ == "__main__":

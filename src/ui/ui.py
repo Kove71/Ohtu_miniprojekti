@@ -1,10 +1,6 @@
 """Yksinkertainen tekstikäyttöliittymä.
 """
-from entities.blog import Blog
-from entities.book import Book
-from entities.podcast import Podcast
-from entities.video import Video
-from repositories.db_interface import DatabaseInterface
+from services.readingtip_service import ReadingtipService
 from ui.console_io import ConsoleIO
 
 class UI:
@@ -15,7 +11,7 @@ class UI:
         console_io: io
     """
 
-    def __init__(self, database: DatabaseInterface, console_io: ConsoleIO):
+    def __init__(self, console_io: ConsoleIO, service: ReadingtipService):
         self._actions = {
             "a": "add a new item",
             "v": "view your items",
@@ -31,7 +27,7 @@ class UI:
         }
 
         self._io = console_io
-        self.database = database
+        self._service = service
 
     def start(self):
         """Käyttöliittymälooppi. Kysyy toimintaa ja kutsuu
@@ -76,11 +72,11 @@ class UI:
     def _mark_item_as_read(self):
         """Kysyy lukuvinkin indeksin ja merkkaa luetuksi
         """
-        for item in self.database.read():
+        for item in self._service.get_items():
             self._io.write(item)
 
         selection = int(self._io.read("\nmark which item as read?(Item number)\n"))
-        self.database.mark_as_read(selection)
+        self._service.mark_as_read(selection)
 
         self._io.write("\ndone")
 
@@ -110,10 +106,9 @@ class UI:
         isbn = self._io.read("ISBN (voluntary): ")
         description = self._io.read("description (voluntary): ")
 
-        item = Book(name, author, isbn, description)
-        self.database.add_book(item)
+        self._service.add_book(name, author, isbn, description)
 
-        self._io.write(f"\nitem {item} added \n")
+        self._io.write(f"\nitem {name} added \n")
 
     def _ask_blog(self):
         name = self._io.read("name of the blog (mandatory): ")
@@ -122,10 +117,9 @@ class UI:
         title = self._io.read("title of blogpost (voluntary): ")
         description = self._io.read("description (voluntary): ")
 
-        item = Blog(name, author, url, title, description)
-        self.database.add_blog(item)
+        self._service.add_blog(name, author, url, title, description)
 
-        self._io.write(f"\nitem {item} added \n")
+        self._io.write(f"\nitem {name} added \n")
 
     def _ask_podcast(self):
         name = ""
@@ -139,10 +133,9 @@ class UI:
         url = self._io.read("url (voluntary): ")
         description = self._io.read("description (voluntary): ")
 
-        podcast = Podcast(name, episode, url, description)
-        self.database.add_podcast(podcast)
+        self._service.add_podcast(name, episode, url, description)
 
-        self._io.write(f"\nitem {podcast} added\n")
+        self._io.write(f"\nitem {name} added\n")
 
     def _ask_video(self):
         name = ""
@@ -156,10 +149,9 @@ class UI:
         channel = self._io.read("name of channel (voluntary): ")
         description = self._io.read("description (voluntary): ")
 
-        video = Video(name, url, channel, description)
-        self.database.add_video(video)
+        self._service.add_video(name, url, channel, description)
 
-        self._io.write(f"\nitem {video} added\n")
+        self._io.write(f"\nitem {name} added\n")
 
 
     def _view_items(self):
@@ -174,19 +166,19 @@ class UI:
 
         self._io.write("")
         if tip_type == 5:
-            for item in self.database.read():
+            for item in self._service.get_items():
                 self._io.write(item)
             return
 
         type_helper = ["", "Book:", "Blog:", "Podcast:", "Video:"]
-        for item in self.database.read():
+        for item in self._service.get_items():
             if item.split()[1] == type_helper[tip_type]:
                 self._io.write(item)
 
     def _remove_item(self):
         """Poistaa yhden lukuvinkin
         """
-        for item in self.database.read():
+        for item in self._service.get_items():
             self._io.write(item)
 
         try:
@@ -195,4 +187,4 @@ class UI:
             self._io.write("Invalid selection")
             return
 
-        self.database.remove_tip(index)
+        self._service.remove_tip(index)
