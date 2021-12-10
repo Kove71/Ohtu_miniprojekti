@@ -5,12 +5,12 @@ from entities.blog import Blog
 from entities.book import Book
 from entities.podcast import Podcast
 from entities.video import Video
-from entities.readingtip import ReadingTip
 from db_connection import get_connection
 
 class DatabaseInterface:
     """Luokka joka vastaa tietokannasta
     """
+
     def __init__(self):
         """Luokan konstrukstori
         """
@@ -55,55 +55,68 @@ class DatabaseInterface:
 
 
     def read(self):
-        """Palauttaa listan merkkijonoesityksiä olioista
+        """Palauttaa listan olioita
         """
         found_reading_tips = []
-        items = self._db.execute("SELECT * FROM readingtips WHERE visible").fetchall()
-        
-        for item in items:
-            item_id = item[0]
-            item_name = item[1]
-            item_description = item[2]
-            item_type = item[3]
-            item_read = item[5]
-            if item_read == 0:
-                item_read = "no"
-
-            if item_type == 1:
-                book_info = self._db.execute("SELECT * FROM book WHERE tip_id = (?)", [item_id]).fetchone()
-                author = book_info[1]
-                isbn = book_info[2]
-
-                book = Book(item_name, author, isbn, item_description)
-                found_reading_tips.append(f'{item_id}: Book: {str(book)}, read: {item_read}')
-
-            if item_type == 2:
-                blog_info = self._db.execute("SELECT * FROM blog WHERE tip_id = (?)", [item_id]).fetchone()
-                title = blog_info[1]
-                author = blog_info[2]
-                url = blog_info[3]
-
-                blog = Blog(item_name, author, url, title, item_description)
-                found_reading_tips.append(f'{item_id}: Blog: {str(blog)}, read: {item_read}')
-
-            if item_type == 3:
-                podcast_info = self._db.execute("SELECT * FROM podcast WHERE tip_id = (?)", [item_id]).fetchone()
-                episode = podcast_info[1]
-                url = podcast_info[2]
-
-                podcast = Podcast(item_name, episode, url, item_description)
-                found_reading_tips.append(f'{item_id}: Podcast: {str(podcast)}, read: {item_read}')
-
-            if item_type == 4:
-                video_info = self._db.execute("SELECT * FROM video WHERE tip_id = (?)", [item_id]).fetchone()
-                url = video_info[1]
-                channel = video_info[2]
-
-                video = Video(item_name, url, channel, item_description)
-                found_reading_tips.append(f'{item_id}: Video: {str(video)}, read: {item_read}')
-
+        found_reading_tips = found_reading_tips + self.get_books()
+        found_reading_tips = found_reading_tips + self.get_blogs()
+        found_reading_tips = found_reading_tips + self.get_podcasts()
+        found_reading_tips = found_reading_tips + self.get_videos() 
+        found_reading_tips.sort(key=lambda tip: tip.id)
 
         return found_reading_tips
+
+    def get_books(self):
+        """Hakee tietokannasta kaikki kirjat ja palauttaa ne Kirja- objekteina
+        """
+        books = []
+        sql = "SELECT R.id, R.name, B.author, B.isbn, R.description, R.read " \
+              "FROM readingtips R LEFT JOIN book B ON R.id=B.tip_id " \
+              "WHERE visible AND R.type=1"
+        results = self._db.execute(sql).fetchall()
+        for book in results:
+            read = False if book[5] == 0 else True
+            books.append(Book(book[0], book[1], book[2], book[3], book[4], read))
+        return books
+
+    def get_blogs(self):
+        """Hakee tietokannasta kaikki blogit ja palauttaa ne Blogi- objekteina
+        """
+        blogs = []
+        sql = "SELECT R.id, R.name, B.author, B.url, R.description, R.read " \
+              "FROM readingtips R LEFT JOIN blog B ON R.id=B.tip_id " \
+              "WHERE visible AND R.type=2"
+        results = self._db.execute(sql).fetchall()
+        for blog in results:
+            read = False if blog[5] == 0 else True
+            blogs.append(Blog(blog[0], blog[1], blog[2], blog[3], blog[4], read))
+        return blogs
+
+    def get_podcasts(self):
+        """Hakee tietokannsta kaikki podcastit ja palauttaa ne Podcast- objekteina
+        """
+        podcasts = []
+        sql = "SELECT R.id, R.name, P.episode, P.url, R.description, R.read " \
+              "FROM readingtips R LEFT JOIN podcast P ON R.id=P.tip_id " \
+              "WHERE visible AND R.type=3"
+        results = self._db.execute(sql).fetchall()
+        for podcast in results:
+            read = False if podcast[5] == 0 else True
+            podcast.append(Blog(podcast[0], podcast[1], podcast[2], podcast[3], podcast[4], read))
+        return podcasts   
+
+    def get_videos(self):
+        """Hakee tietokannasta kaikki videot ja palauttaa ne Video- objekteina
+        """
+        videos = []
+        sql = "SELECT R.id, R.name, V.url, V.author, R.description, R.read " \
+              "FROM readingtips R LEFT JOIN video V ON R.id=V.tip_id " \
+              "WHERE visible AND R.type=4"
+        results = self._db.execute(sql).fetchall()
+        for video in results:
+            read = False if video[5] == 0 else True
+            videos.append(Video(video[0], video[1], video[2], video[3], video[4], read))
+        return videos     
 
     def remove_tip(self, index: int):
         """Poistaa yhden lukuvinkin näkyvistä
@@ -122,3 +135,4 @@ class DatabaseInterface:
         self._db.execute("UPDATE readingtips SET read = (?) WHERE id = (?)", [timestamp, index])
 
         return True
+
