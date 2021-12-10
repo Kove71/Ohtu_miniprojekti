@@ -170,9 +170,9 @@ class UI:
                 self._io.write(item)
             return
 
-        type_helper = ["", "Book:", "Blog:", "Podcast:", "Video:"]
+        #type_helper = ["", "Book:", "Blog:", "Podcast:", "Video:"]
         for item in self._service.get_items():
-            if item.split()[1] == type_helper[tip_type]:
+            if item.type == tip_type:
                 self._io.write(item)
 
     def _remove_item(self):
