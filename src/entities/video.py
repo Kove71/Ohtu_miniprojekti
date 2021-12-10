@@ -13,7 +13,7 @@ class Video:
         self.description = description
         self.channel = channel
         self.id = id
-        self._type = 4
+        self.type = 4
         self.read = read
 
     def __str__(self):
