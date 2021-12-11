@@ -14,8 +14,9 @@ class ReadingtipLibrary: # pylint: disable=invalid-name
         """Luokan konstruktori
         """
         self._io = StubIO()
-        self.database = DatabaseInterface()
-        self._ui = UI(self.database, self._io)
+        self.database = DatabaseInterface("test_db.db")
+        self._ui = UI(self._io, self.database)
+
 
     def input(self, value):
         """Luo syötteen
