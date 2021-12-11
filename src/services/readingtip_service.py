@@ -16,25 +16,25 @@ class ReadingtipService:
     def add_book(self, name, author, isbn=None, description=None):
         """Lisää kirja-olion tietokantaan
         """
-        book = Book(name, author, isbn, description)
+        book = Book(0, name, author, isbn, description)
         self._db.add_book(book)
 
     def add_blog(self, name, author, url, title=None, description=None):
         """Lisää blogi-olion tietokantaan
         """
-        blog = Blog(name, author, url, title, description)
+        blog = Blog(0, name, author, url, title, description)
         self._db.add_blog(blog)
     
     def add_podcast(self, name, episode, url=None, description=None):
         """lisää podcast-olion tietokantaan
         """
-        podcast = Podcast(name, episode, url, description)
+        podcast = Podcast(0, name, episode, url, description)
         self._db.add_podcast(podcast)
 
     def add_video(self, name, url, channel=None, description=None):
         """Lisää video-olion tietokantaan
         """
-        video = Video(name, url, channel, description)
+        video = Video(0, name, url, channel, description)
         self._db.add_video(video)
 
     def get_items(self):

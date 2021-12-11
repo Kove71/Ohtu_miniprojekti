@@ -25,3 +25,5 @@ class Podcast:
                 #f"Read: {'Yes' if self.read else 'No'}\n"
         return string
         
+    def short_form(self):
+        return f"Podcast {self.id}: {self.name} episode {self.episode}"

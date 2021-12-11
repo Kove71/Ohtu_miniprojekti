@@ -25,3 +25,5 @@ class Video:
                 f"Watched: {self.read}\033[0m\n"
         return string
         
+    def short_form(self):
+        return f"Video {self.id}: {self.name} url:{self.url}"

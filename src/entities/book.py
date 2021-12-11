@@ -24,3 +24,6 @@ class Book:
                 f"Description: {self.description if self.description is not None else 'None'}\033[0m\n"
                 #f"Read: {'Yes' if self.read else 'No'}\n"
         return string
+
+    def short_form(self):
+        return f"Book {self.id}: {self.name} by {self.author}"

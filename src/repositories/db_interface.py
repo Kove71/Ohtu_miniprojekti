@@ -83,13 +83,13 @@ class DatabaseInterface:
         """Hakee tietokannasta kaikki blogit ja palauttaa ne Blogi- objekteina
         """
         blogs = []
-        sql = "SELECT R.id, R.name, B.author, B.url, R.description, R.read " \
+        sql = "SELECT R.id, R.name, B.author, B.url, B.title, R.description, R.read " \
               "FROM readingtips R LEFT JOIN blog B ON R.id=B.tip_id " \
               "WHERE visible AND R.type=2"
         results = self._db.execute(sql).fetchall()
         for blog in results:
             read = False if blog[5] == 0 else True
-            blogs.append(Blog(blog[0], blog[1], blog[2], blog[3], blog[4], read))
+            blogs.append(Blog(blog[0], blog[1], blog[2], blog[3], blog[4], blog[5], read))
         return blogs
 
     def get_podcasts(self):

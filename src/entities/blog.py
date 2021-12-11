@@ -4,7 +4,7 @@
 class Blog:
     """Luokka kuvaa blogityyppistä lukuvinkkiä
     """
-    def __init__(self, id, name, author, url, description=None, read=None):
+    def __init__(self, id, name, author, url, title=None, description=None, read=None):
         """
         """
         self.id = id
@@ -12,6 +12,7 @@ class Blog:
         self.author = author
         self.url = url
         self.description = description
+        self.title = title
 
         self.read = read
         self.type = 3
@@ -24,3 +25,6 @@ class Blog:
                 f"Description: {self.description if self.description is not None else 'None'}\n" 
                 #f"Read: {'Yes' if self.read else 'No'}\n"
         return string
+
+    def short_form(self):
+        return f"Blog {self.id}: {self.name} by {self.author}"
