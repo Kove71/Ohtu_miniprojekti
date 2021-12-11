@@ -3,11 +3,15 @@
 from db_connection import get_connection
 from db_clear import clear_database
 
-def build_database():
+def build_database(database_path = None):
     """Alustaa tietokannan taulut
     toistaiseksi vain readingtips
     """
-    database = get_connection()
+    if not database_path:
+        database = get_connection()
+    else:
+        database = get_connection(database_path)
+        
     sql = ['''
             CREATE TABLE IF NOT EXISTS readingtips (
             id INTEGER PRIMARY KEY, 
