@@ -11,11 +11,13 @@ class DatabaseInterface:
     """Luokka joka vastaa tietokannasta
     """
 
-    def __init__(self):
+    def __init__(self, database_path = None):
         """Luokan konstrukstori
         """
-        self._db = get_connection()
-
+        if not database_path:
+            self._db = get_connection()
+        else:
+            self._db = get_connection(database_path)
 
     def add_book(self, book: Book):
         """Ottaa Book- olion, lisää tietokantaan readingtips ja book-tauluihin kirjan tiedot
