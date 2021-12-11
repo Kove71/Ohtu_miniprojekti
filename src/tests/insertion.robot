@@ -7,13 +7,13 @@ Insert Book Readingtip
     Input Add Command
     Input Book Type
     Create New Book  Tuntematon sotilas  Väinö Linna  9789510425459  sotaromaani
-    Output Should Contain  \nitem Tuntematon sotilas added \n
+    Output Should Contain  \nitem Tuntematon sotilas added\n
 
 Insert Blog Readingtip
     Input Add Command
     Input Blog Type
     Create New Blog  Endorfiineja  Kirsi  https://kirsberry.blogspot.com  Liikuntablogi
-    Output Should Contain  \nitem Endorfiineja added \n
+    Output Should Contain  \nitem Endorfiineja added\n
 
 Insert Podcast Readingtip
     Input Add Command

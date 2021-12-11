@@ -112,7 +112,7 @@ class UI:
 
         self._service.add_book(name, author, isbn, description)
 
-        self._io.write(f"\nitem {name} added \n")
+        self._io.write(f"\nitem {name} added\n")
 
     def _ask_blog(self):
         name = ""
@@ -127,7 +127,7 @@ class UI:
 
         self._service.add_blog(name, author, url, title, description)
 
-        self._io.write(f"\nitem {name} added \n")
+        self._io.write(f"\nitem {name} added\n")
 
     def _ask_podcast(self):
         name = ""
