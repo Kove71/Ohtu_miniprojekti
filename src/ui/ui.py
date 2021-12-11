@@ -101,8 +101,12 @@ class UI:
             self._ask_video()
 
     def _ask_book(self):
-        name = self._io.read("name of the book (mandatory): ")
-        author = self._io.read("author (mandatory): ")
+        name = ""
+        while name == "":
+            name = self._io.read("name of the book (mandatory): ")
+        author =""
+        while author == "":
+            author = self._io.read("author (mandatory): ")
         isbn = self._io.read("ISBN (voluntary): ")
         description = self._io.read("description (voluntary): ")
 
@@ -111,8 +115,12 @@ class UI:
         self._io.write(f"\nitem {name} added \n")
 
     def _ask_blog(self):
-        name = self._io.read("name of the blog (mandatory): ")
-        author = self._io.read("author(mandatory): ")
+        name = ""
+        while name == "":
+            name = self._io.read("name of the blog (mandatory): ")
+        author = ""
+        while author == "":
+            author = self._io.read("author(mandatory): ")
         url = self._io.read("url (mandatory): ")
         title = self._io.read("title of blogpost (voluntary): ")
         description = self._io.read("description (voluntary): ")
