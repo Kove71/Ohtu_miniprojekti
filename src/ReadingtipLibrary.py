@@ -45,7 +45,6 @@ class ReadingtipLibrary: # pylint: disable=invalid-name
                 f"Output \"{value}\" is not in {str(outputs)}"
             )
 
-
     def run_application(self):
         """Käynnistää sovelluksen
         """

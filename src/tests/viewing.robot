@@ -8,7 +8,7 @@ View Book Readingtip
     Input Book Type
     Create New Book  Tuntematon sotilas  Väinö Linna  9789510425459  sotaromaani
     
-    View All
+    View Books
     Output Should Contain  Name: Tuntematon sotilas
     Output Should Contain  Author: Väinö Linna
     Output Should Contain  ISBN: 9789510425459
@@ -20,7 +20,7 @@ View Blog Readingtip
     Input Blog Type
     Create New Blog  Endorfiineja  Kirsi  https://kirsberry.blogspot.com  title  Liikuntablogi
 
-    View All
+    View Blogs
     Output Should Contain  Name: Endorfiineja
     Output Should Contain  Author: Kirsi
     Output Should Contain  URL: https://kirsberry.blogspot.com
@@ -31,7 +31,7 @@ View Podcast Readingtip
     Input Podcast Type
     Create New Podcast  Jäljillä  Jessica Johnson  https://www.spotify.com  Katoamistapausmysteeri
 
-    View All
+    View Podcasts
     Output Should Contain  Name: Jäljillä
     Output Should Contain  Episode: Jessica Johnson
     Output Should Contain  URL: https://www.spotify.com
@@ -42,7 +42,7 @@ View Video Readingtip
     Input Video Type
     Create New Video  How to Tie a Tie  https://www.youtube.com/watch?v=xAg7z6u4NE8  tiehole  how to tie a tie tutorial
 
-    View All
+    View Videos
     Output Should Contain  Name: How to Tie a Tie
     Output Should Contain  URL: https://www.youtube.com/watch?v=xAg7z6u4NE8
     Output Should Contain  Channel: tiehole

@@ -14,6 +14,9 @@ Input View Command
 Input Clear Command
     Input  c
 
+Input Edit Command
+    Input  e
+
 Input Exit Command
     Input  q
 
@@ -86,3 +89,148 @@ View All
     Input View Command
     Input  5
     Run Application
+
+Change Book Name
+    [Arguments]  ${name}
+    Input Edit Command
+    Input Book Type
+    Input  1
+    Input  1
+    Input  ${name}
+    Run Application
+
+Change Book Author
+    [Arguments]  ${author}
+    Input Edit Command
+    Input Book Type
+    Input  1
+    Input  2
+    Input  ${author}
+    Run Application
+
+Change Book ISBN
+    [Arguments]  ${ISBN}
+    Input Edit Command
+    Input Book Type
+    Input  1
+    Input  3
+    Input  ${ISBN}
+    Run Application
+
+Change Book Description
+    [Arguments]  ${description}
+    Input Edit Command
+    Input Book Type
+    Input  1
+    Input  4
+    Input  ${description}
+    Run Application
+
+
+Change Blog Name
+    [Arguments]  ${name}
+    Input Edit Command
+    Input Blog Type
+    Input  1
+    Input  1
+    Input  ${name}
+
+
+Change Blog Author
+    [Arguments]  ${author}
+    Input Edit Command
+    Input Blog Type
+    Input  1
+    Input  2
+    Input  ${author}
+
+
+Change Blog URL
+    [Arguments]  ${URL}
+    Input Edit Command
+    Input Blog Type
+    Input  1
+    Input  3
+    Input  ${URL}
+
+
+Change Blog Description
+    [Arguments]  ${description}
+    Input Edit Command
+    Input Blog Type
+    Input  1
+    Input  4
+    Input  ${description}
+
+
+Change Podcast Name
+    [Arguments]  ${name}
+    Input Edit Command
+    Input Podcast Type
+    Input  1
+    Input  1
+    Input  ${name}
+
+
+Change Podcast Episode
+    [Arguments]  ${episode}
+    Input Edit Command
+    Input Podcast Type
+    Input  1
+    Input  2
+    Input  ${episode}
+
+
+Change Podcast URL
+    [Arguments]  ${URL}
+    Input Edit Command
+    Input Podcast Type
+    Input  1
+    Input  3
+    Input  ${URL}
+
+
+Change Podcast Description
+    [Arguments]  ${description}
+    Input Edit Command
+    Input Podcast Type
+    Input  1
+    Input  4
+    Input  ${description}
+
+
+
+Change Video Name
+    [Arguments]  ${name}
+    Input Edit Command
+    Input Video Type
+    Input  1
+    Input  1
+    Input  ${name}
+
+
+Change Video URL
+    [Arguments]  ${URL}
+    Input Edit Command
+    Input Video Type
+    Input  1
+    Input  2
+    Input  ${URL}
+
+
+Change Video Channel
+    [Arguments]  ${channel}
+    Input Edit Command
+    Input Video Type
+    Input  1
+    Input  3
+    Input  ${channel}
+
+
+Change Video Description
+    [Arguments]  ${description}
+    Input Edit Command
+    Input Video Type
+    Input  1
+    Input  4
+    Input  ${description}
