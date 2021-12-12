@@ -77,7 +77,7 @@ class DatabaseInterface:
               "WHERE visible AND R.type=1"
         results = self._db.execute(sql).fetchall()
         for book in results:
-            read = False if book[5] == 0 else True
+            read = None if book[5] == 0 else book[5]
             books.append(Book(book[0], book[1], book[2], book[3], book[4], read))
         return books
 
@@ -90,7 +90,7 @@ class DatabaseInterface:
               "WHERE visible AND R.type=2"
         results = self._db.execute(sql).fetchall()
         for blog in results:
-            read = False if blog[5] == 0 else True
+            read = None if blog[6] == 0 else blog[6]
             blogs.append(Blog(blog[0], blog[1], blog[2], blog[3], blog[4], blog[5], read))
         return blogs
 
@@ -103,8 +103,8 @@ class DatabaseInterface:
               "WHERE visible AND R.type=3"
         results = self._db.execute(sql).fetchall()
         for podcast in results:
-            read = False if podcast[5] == 0 else True
-            podcasts.append(Podcast(podcast[0], podcast[1], podcast[2], podcast[3], podcast[4], read))
+            read = None if podcast[5] == 0 else podcast[5]
+            podcasts.append(Blog(podcast[0], podcast[1], podcast[2], podcast[3], podcast[4], read))
         return podcasts   
 
     def get_videos(self):
@@ -116,7 +116,7 @@ class DatabaseInterface:
               "WHERE visible AND R.type=4"
         results = self._db.execute(sql).fetchall()
         for video in results:
-            read = False if video[5] == 0 else True
+            read = None if video[5] == 0 else video[5]
             videos.append(Video(video[0], video[1], video[2], video[3], video[4], read))
         return videos     
 

@@ -11,19 +11,20 @@ class Blog:
         self.name = name
         self.author = author
         self.url = url
-        self.description = description
-        self.title = title
+        self.description = description if description != "" else None
+        self.title = title if title != "" else None
 
         self.read = read
         self.type = 3
 
     def __str__(self):
-        string = f"ID - {self.id} \n" \
-                f"Name: {self.name}\n" \
-                f"Author: {self.author}\n" \
-                f"URL: {self.url if self.url is not None else 'Unknown'}\n" \
-                f"Description: {self.description if self.description is not None else 'None'}\n" 
-                #f"Read: {'Yes' if self.read else 'No'}\n"
+        string = f"\033[1;37;40mBlog {self.id: <72}" \
+                f"\033[0;31;47m\nName: \033[0;30;47m{self.name: <50}" \
+                f"\033[1;34;0m\nAuthor: {self.author}\n" \
+                f"ISBN: {self.title if self.title is not None else 'Unknown'}\n" \
+                f"URL: {self.url}\n" \
+                f"Description: {self.description if self.description is not None else 'None'}\033[0;0;0m\n" \
+                f"Read: {'Not read' if self.read is None else self.read}\n"
         return string
 
     def short_form(self):
