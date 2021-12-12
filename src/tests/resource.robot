@@ -38,9 +38,10 @@ Create New Book
     Run Application
 
 Create New Blog
-    [Arguments]  ${name}  ${author}  ${title}  ${description}
+    [Arguments]  ${name}  ${author}  ${url}  ${title}  ${description}
     Input  ${name}
     Input  ${author}
+    Input  ${url}
     Input  ${title}
     Input  ${description}
     Run Application
@@ -59,4 +60,29 @@ Create New Video
     Input  ${url}
     Input  ${channel}
     Input  ${description}
+    Run Application
+
+View Books
+    Input View Command
+    Input Book Type
+    Run Application
+
+View Blogs
+    Input View Command
+    Input Blog Type
+    Run Application
+
+View Podcasts
+    Input View Command
+    Input Podcast Type
+    Run Application
+
+View Videos
+    Input View Command
+    Input Video Type
+    Run Application
+
+View All
+    Input View Command
+    Input  5
     Run Application

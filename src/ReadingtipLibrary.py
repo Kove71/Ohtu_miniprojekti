@@ -35,7 +35,12 @@ class ReadingtipLibrary: # pylint: disable=invalid-name
         """Tarkistaa tulosteen
         """
         outputs = self._io.outputs
-        if not value in outputs:
+        found = False
+        for output in outputs:
+            if value in output:
+                found = True
+
+        if not found:
             raise AssertionError(
                 f"Output \"{value}\" is not in {str(outputs)}"
             )
