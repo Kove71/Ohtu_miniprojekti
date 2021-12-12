@@ -10,19 +10,19 @@ class Video:
         self.id = id
         self.name = name
         self.url = url
-        self.description = description
-        self.channel = channel
+        self.description = description if description != "" else None
+        self.channel = channel if channel != "" else None
         self.id = id
         self.type = 4
         self.read = read
 
     def __str__(self):
-        string = f"Video {self.id}" \
-                f"\n\033[92mName: {self.name}\n" \
-                f"\033[93mURL: {self.url if self.url is not None else 'Unknown'}\n" \
-                f"Channel: {self.channel if self.channel is not None else 'Unknown'}\n" \
-                f"Description: {self.description if self.description is not None else 'None'}\n" \
-                f"Watched: {self.read}\033[0m\n"
+        string = f"\033[1;37;40mVideo {self.id: <71}" \
+                f"\033[0;31;47m\nName: \033[0;30;47m{self.name: <50}" \
+                f"\033[1;34;0m\nURL: {self.url}\n" \
+                f"ISBN: {self.channel if self.channel is not None else 'Unknown'}\n" \
+                f"Description: {self.description if self.description is not None else 'None'}\033[0;0;0m\n" \
+                f"Watched: {'Not watched' if self.read is None else self.read}\n"
         return string
         
     def short_form(self):
