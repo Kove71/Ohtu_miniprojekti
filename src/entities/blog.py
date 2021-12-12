@@ -15,7 +15,7 @@ class Blog:
         self.title = title if title != "" else None
 
         self.read = read
-        self.type = 3
+        self.type = 2
 
     def __str__(self):
         string = f"\033[1;37;40mBlog {self.id: <72}" \

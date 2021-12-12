@@ -14,7 +14,7 @@ class Podcast:
         self.description = description if description != "" else None
 
         self.read = read
-        self.type = 2
+        self.type = 3
 
     def __str__(self):
         string = f"\033[1;37;40mPodcast {self.id: <69}" \
