@@ -6,6 +6,9 @@
 from stub_io import StubIO # pylint: disable=import-error
 from ui.ui import UI
 from repositories.db_interface import DatabaseInterface
+from db_build import build_database
+from db_clear import clear_database
+from services.readingtip_service import ReadingtipService
 class ReadingtipLibrary: # pylint: disable=invalid-name
     """Luokka joka vastaa vaatimusten testaamisesta
     """
@@ -14,8 +17,14 @@ class ReadingtipLibrary: # pylint: disable=invalid-name
         """Luokan konstruktori
         """
         self._io = StubIO()
-        self.database = DatabaseInterface()
-        self._ui = UI(self.database, self._io)
+        self.db_name = "test_db.db"
+        clear_database(self.db_name)
+        build_database(self.db_name)
+        self.database = DatabaseInterface(self.db_name)
+        self.service = ReadingtipService(self.database)
+
+        self._ui = UI(self._io, self.service)
+        
 
     def input(self, value):
         """Luo syötteen
@@ -26,8 +35,12 @@ class ReadingtipLibrary: # pylint: disable=invalid-name
         """Tarkistaa tulosteen
         """
         outputs = self._io.outputs
+        found = False
+        for output in outputs:
+            if value in output:
+                found = True
 
-        if not value in outputs:
+        if not found:
             raise AssertionError(
                 f"Output \"{value}\" is not in {str(outputs)}"
             )

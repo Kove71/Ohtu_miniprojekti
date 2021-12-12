@@ -1,6 +1,11 @@
 """Io-luokan stub
 """
 
+from entities.book import Book
+from entities.blog import Blog
+from entities.podcast import Podcast
+from entities.video import Video
+
 class StubIO:
 
     def __init__(self, inputs=None):
@@ -8,7 +13,7 @@ class StubIO:
         self.outputs = []
 
     def write(self, value):
-        self.outputs.append(value)
+        self.outputs.append(str(value))
 
     def read(self, prompt=None):
         if len(self.inputs) > 0:
