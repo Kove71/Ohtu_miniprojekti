@@ -52,4 +52,28 @@ class ReadingtipService:
         """Merkitsee lukuvinkin luetuksi
         """
         self._db.mark_as_read(item)
-    
+
+    def edit_readingtip(self, index, field, new_value):
+        """Muokkaa valittua kenttää lukuvinkistä
+        """
+        self._db.edit_readingtip(index, field, new_value)
+
+    def edit_book(self, index, field, new_value):
+        """Muokkaa valittua kenttää kirja-lukuvinkistä
+        """
+        self._db.edit_book(index, field, new_value)
+
+    def edit_blog(self, index, field, new_value):
+        """Muokkaa valittua kenttää blogi-lukuvinkistä
+        """
+        self._db.edit_blog(index, field, new_value)
+
+    def edit_podcast(self, index, field, new_value):
+        """Muokkaa valittua kenttää podcastista
+        """
+        self._db.edit_podcast(index, field, new_value)
+
+    def edit_video(self, index, field, new_value):
+        """Muokkaa valittua kenttää videosta
+        """
+        self._db.edit_video(index, field, new_value)

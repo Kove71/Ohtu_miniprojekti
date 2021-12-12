@@ -17,6 +17,7 @@ class UI:
             "v": "view your items",
             "m": "mark item as read",
             "r": "remove an item",
+            "e": "edit an item",
             "q": "exit program"
         }
         self._types = {
@@ -47,6 +48,8 @@ class UI:
                 self._mark_item_as_read()
             elif action == "r":
                 self._remove_item()
+            elif action == "e":
+                self._edit_item()
             elif action == "q":
                 break
             else:
@@ -118,10 +121,13 @@ class UI:
         name = ""
         while name == "":
             name = self._io.read("name of the blog (mandatory): ")
+
         author = ""
         while author == "":
             author = self._io.read("author(mandatory): ")
-        url = self._io.read("url (mandatory): ")
+        url = ""
+        while url == "":
+            url = self._io.read("url (mandatory): ")
         title = self._io.read("title of blogpost (voluntary): ")
         description = self._io.read("description (voluntary): ")
 
@@ -196,3 +202,130 @@ class UI:
             return
 
         self._service.remove_tip(index)
+
+    def _edit_item(self):
+        """Kysyy käyttäjältä, minkä tyyppistä lukuvinkkiä muutetaan ja ohjaa eteenpäin
+        """
+        try:
+            type = int(self._io.read(
+                "\nThe type of readingtip to edit: \n1: book\n2: blog\n3: podcast\n4: video\n"))
+            if type >= 5 or type <= 0:
+                self._io.write("Invalid command")
+                return
+        except:
+            self._io.write("Invalid command")
+            return
+
+        self._io.write("\n")
+        items = False
+        id_numbers = []
+        for item in self._service.get_items():
+            if item.type == type:
+                items = True
+                id_numbers.append(item.id)
+                self._io.write(item)
+
+        if not items:
+            self._io.write("Items of selected type not found")
+            return
+
+        try:
+            string = "\nEdit which item? item numbers:" + str(id_numbers)+" \n"
+            index = int(self._io.read(string))
+            if index not in id_numbers:
+                self._io.write("\nNumber must be in" + str(id_numbers) + "\n")
+                return
+        except:
+            self._io.write("Invalid selection")
+            return
+
+        if type == 1:
+            self._edit_book(index)
+        elif type == 2:
+            self._edit_blog(index)
+        elif type == 3:
+            self._edit_podcast(index)
+        elif type == 4:
+            self._edit_video(index)
+
+    def _edit_book(self, index):
+        """Muokkaa kirja-tyyppisen lukuvinkin tietoja
+        """
+        self._show_editable_tips(index)
+
+        try:
+            field = int(self._io.read("\n1: Name\n2: Author\n3: ISBN\n4: Description\n"))
+        except:
+            self._io.write("Invalid command")
+            return
+        new_value = self._io.read("\nNew value: \n")
+
+        if field == 1 or 4:
+            self._service.edit_readingtip(index, field, new_value)
+
+        if field == 2 or 3:
+            self._service.edit_book(index, field, new_value)
+
+    def _edit_blog(self, index):
+        """Muokkaa blogi-tyyppisen lukuvinkin tietoja
+        """
+
+        self._show_editable_tips(index)
+
+        try:
+            field = int(self._io.read("\n1: Name\n2: Author\n3: URL\n4: Description\n5: Title\n"))
+        except:
+            self._io.write("Invalid command")
+            return
+        new_value = self._io.read("\nNew value: \n")
+
+        if field == 1 or 4:
+            self._service.edit_readingtip(index, field, new_value)
+
+        if field == 2 or 3 or 5:
+            self._service.edit_blog(index, field, new_value)
+
+    def _edit_podcast(self, index):
+        """Muokkaa podcastin tietoja
+        """
+
+        self._show_editable_tips(index)
+
+        try:
+            field = int(self._io.read("\n1: Name\n2: Episode\n3: URL\n4: Description\n"))
+        except:
+            self._io.write("Invalid command")
+            return
+        new_value = self._io.read("\nNew value: \n")
+
+        if field == 1 or 4:
+            self._service.edit_readingtip(index, field, new_value)
+
+        if field == 2 or 3:
+            self._service.edit_podcast(index, field, new_value)
+
+    def _edit_video(self, index):
+        """Muokkaa videon tietoja
+        """
+
+        self._show_editable_tips(index)
+
+        try:
+            field = int(self._io.read("\n1: Name\n2: URL\n3: Channel\n4: Description\n"))
+        except:
+            self._io.write("Invalid command")
+            return
+        new_value = self._io.read("\nNew value: \n")
+
+        if field == 1 or 4:
+            self._service.edit_readingtip(index, field, new_value)
+
+        if field == 2 or 3:
+            self._service.edit_video(index, field, new_value)
+
+    def _show_editable_tips(self, index):
+        self._io.write("\nAn editable reading tip: \n")
+        for item in self._service.get_items():
+            if item.id == index:
+                self._io.write(item)
+        self._io.write("\nWhich field you want to edit?\n")

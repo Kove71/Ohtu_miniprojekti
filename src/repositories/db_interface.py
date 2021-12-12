@@ -104,7 +104,7 @@ class DatabaseInterface:
         results = self._db.execute(sql).fetchall()
         for podcast in results:
             read = False if podcast[5] == 0 else True
-            podcasts.append(Blog(podcast[0], podcast[1], podcast[2], podcast[3], podcast[4], read))
+            podcasts.append(Podcast(podcast[0], podcast[1], podcast[2], podcast[3], podcast[4], read))
         return podcasts   
 
     def get_videos(self):
@@ -138,3 +138,38 @@ class DatabaseInterface:
 
         return True
 
+    def edit_readingtip(self, index, field, new_value):
+        """Muokkaa lukuvinkistä halutun kentän
+        """
+        if field == 1:
+            self._db.execute("UPDATE readingtips SET name = (?) WHERE id = (?)", [new_value, index])
+        if field == 4:
+            self._db.execute("UPDATE readingtips SET description = (?) WHERE id = (?)", [new_value, index])
+
+    def edit_book(self, index, field, new_value):
+        """Muokkaa kirja-oliosta halutun kentän
+        """
+        if field == 2:
+            self._db.execute("UPDATE book SET author = (?) WHERE tip_id = (?)", [new_value, index])
+        if field == 3:
+            self._db.execute("UPDATE book SET isbn = (?) WHERE tip_id = (?)", [new_value, index])
+
+    def edit_blog(self, index, field, new_value):
+        if field == 2:
+            self._db.execute("UPDATE blog SET author = (?) WHERE tip_id = (?)", [new_value, index])
+        if field == 3:
+            self._db.execute("UPDATE blog SET url = (?) WHERE tip_id = (?)", [new_value, index])
+        if field == 5:
+            self._db.execute("UPDATE blog SET title = (?) WHERE tip_id = (?)", [new_value, index])
+
+    def edit_podcast(self, index, field, new_value):
+        if field == 2:
+            self._db.execute("UPDATE podcast SET episode = (?) WHERE tip_id = (?)", [new_value, index])
+        if field == 3:
+            self._db.execute("UPDATE podcast SET url = (?) WHERE tip_id = (?)", [new_value, index])
+
+    def edit_video(self, index, field, new_value):
+        if field == 2:
+            self._db.execute("UPDATE video SET url = (?) WHERE tip_id = (?)", [new_value, index])
+        if field == 3:
+            self._db.execute("UPDATE video SET channel = (?) WHERE tip_id = (?)", [new_value, index])
