@@ -17,10 +17,10 @@ class TestDatabaseInterface(unittest.TestCase):
         """Alustaa ReadingTip- ja DatabaseInterface-oliot.
         """
         clear_database()
-        self.book = Book("kirja", "aino")
-        self.blog = Blog("blogi", "pekka", "https://...")
-        self.podcast = Podcast("podcast", "5.jakso")
-        self.video = Video("video", "hassu kissa", "https://")
+        self.book = Book(1, "kirja", "aino")
+        self.blog = Blog(2, "blogi", "pekka", "https://...")
+        self.podcast = Podcast(3, "podcast", "5.jakso")
+        self.video = Video(4, "video", "hassu kissa", "https://")
         self.database = DatabaseInterface()
 
     def test_add_book(self):
