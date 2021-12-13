@@ -172,4 +172,4 @@ class DatabaseInterface:
         if field == 2:
             self._db.execute("UPDATE video SET url = (?) WHERE tip_id = (?)", [new_value, index])
         if field == 3:
-            self._db.execute("UPDATE video SET channel = (?) WHERE tip_id = (?)", [new_value, index])
+            self._db.execute("UPDATE video SET author = (?) WHERE tip_id = (?)", [new_value, index])

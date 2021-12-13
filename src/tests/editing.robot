@@ -31,19 +31,19 @@ Edit Blog Readingtip
 
     Change Blog Name  Asdf
     View Blogs
-    Output Should Contain:  Name: Asdf
+    Output Should Contain  Name: Asdf
 
     Change Blog Author  Asdf
     View Blogs
-    Output Should Contain:  Author: Asdf
+    Output Should Contain  Author: Asdf
 
     Change Blog URL  Asdf
     View Blogs
-    Output Should Contain:  URL: Asdf
+    Output Should Contain  URL: Asdf
 
     Change Blog Description  Asdf
     View Blogs
-    Output Should Contain:  Description: Asdf
+    Output Should Contain  Description: Asdf
 
 
 Edit Podcast Readingtip
