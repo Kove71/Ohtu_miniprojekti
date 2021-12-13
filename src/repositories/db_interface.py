@@ -104,7 +104,7 @@ class DatabaseInterface:
         results = self._db.execute(sql).fetchall()
         for podcast in results:
             read = None if podcast[5] == 0 else podcast[5]
-            podcasts.append(Blog(podcast[0], podcast[1], podcast[2], podcast[3], podcast[4], read))
+            podcasts.append(Podcast(podcast[0], podcast[1], podcast[2], podcast[3], podcast[4], read))
         return podcasts   
 
     def get_videos(self):
