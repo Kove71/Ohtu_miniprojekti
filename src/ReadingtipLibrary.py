@@ -3,6 +3,7 @@
 """
 
 #Pylint disablettu toistaiseksi
+import datetime
 from stub_io import StubIO # pylint: disable=import-error
 from ui.ui import UI
 from repositories.db_interface import DatabaseInterface
@@ -68,4 +69,18 @@ class ReadingtipLibrary: # pylint: disable=invalid-name
                 f"{value} is not in {lastoutput}"
             )
 
+    def check_tip_is_read(self):
+        """Tarkistaa että vinkki on merkattu luetuksi oikealla päivämäärällä
+        """
+        now = datetime.datetime.now()
+        string_to_find = f'{now.year}-{now.month}-{now.day}'
+        found = False
 
+        for output in self._io.outputs:
+            if string_to_find in output:
+                found = True
+
+        if not found:
+            raise AssertionError(
+                f"not marked as read / watched / listened, outputs: {self._io.outputs}"
+            )
