@@ -20,6 +20,9 @@ Input Edit Command
 Input Mark Command
     Input  m
 
+Input Remove Command
+    Input  r
+
 Input Exit Command
     Input  q
 
@@ -243,3 +246,10 @@ Mark As Read
     [Arguments]  ${item_no}
     Input Mark Command
     Input  ${item_no}
+
+
+Remove Item
+    [Arguments]  ${item_no}
+    Input Remove Command
+    Input  ${item_no}
+    Run Application

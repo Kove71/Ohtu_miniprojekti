@@ -45,7 +45,6 @@ Edit Blog Readingtip
     View Blogs
     Output Should Contain  Description: Asdf
 
-
 Edit Podcast Readingtip
     Input Add Command
     Input Podcast Type

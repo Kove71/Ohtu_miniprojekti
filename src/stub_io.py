@@ -23,3 +23,6 @@ class StubIO:
 
     def add_input(self, value):
         self.inputs.append(value)
+
+    def clear_outputs(self):
+        self.outputs.clear()

@@ -36,8 +36,8 @@ class ReadingtipLibrary: # pylint: disable=invalid-name
         """Tarkistaa tulosteen
         """
         words = value.split()
-
         outputs = self._io.outputs
+
         for output in outputs:
             found = True
             for word in words:
@@ -51,6 +51,32 @@ class ReadingtipLibrary: # pylint: disable=invalid-name
             raise AssertionError(
                 f"Output \"{value}\" is not in {str(outputs)}"
             )
+
+    def output_should_not_contain(self, value):
+        """Tarkistaa että tulosteesta ei löydy annettua tekstiä
+        """
+        words = value.split()
+        outputs = self._io.outputs
+
+        for output in outputs:
+            found = True
+            for word in words:
+                if not word in output:
+                    found = False
+                    break
+            if found:
+                break
+
+        if found :
+            raise AssertionError(
+                f"Output \"{value}\" is in {str(outputs)}"
+            )
+
+    def clear_output(self):
+        """Tyhjentää tulosteen
+        """
+        self._io.clear_outputs()
+
 
     def run_application(self):
         """Käynnistää sovelluksen
