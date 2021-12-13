@@ -39,12 +39,12 @@ class ReadingtipLibrary: # pylint: disable=invalid-name
         """Tarkistaa viimeisen tulosteen
         """
         if len(self._io.output) > 0:
-            last_output = self._io.output.pop()
+            lastoutput = self._io.output.pop()
         else:
-            last_output =  ""
-        if last_output != value:
+            lastoutput =  ""
+        if lastoutput != value:
             raise AssertionError(
-                f"{value} is not in {last_output}"
+                f"{value} is not in {lastoutput}"
             )
 
 
