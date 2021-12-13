@@ -17,6 +17,9 @@ Input Clear Command
 Input Edit Command
     Input  e
 
+Input Mark Command
+    Input  m
+
 Input Exit Command
     Input  q
 
@@ -234,3 +237,9 @@ Change Video Description
     Input  1
     Input  4
     Input  ${description}
+
+
+Mark As Read
+    [Arguments]  ${item_no}
+    Input Mark Command
+    Input  ${item_no}

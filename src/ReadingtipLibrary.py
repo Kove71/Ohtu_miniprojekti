@@ -3,7 +3,6 @@
 """
 
 #Pylint disablettu toistaiseksi
-import re
 from stub_io import StubIO # pylint: disable=import-error
 from ui.ui import UI
 from repositories.db_interface import DatabaseInterface
@@ -35,16 +34,17 @@ class ReadingtipLibrary: # pylint: disable=invalid-name
     def output_should_contain(self, value):
         """Tarkistaa tulosteen
         """
-        value_split = value.split()
-        value_regex_string = '('
-        value_regex_string += ')*('.join(value_split)
-        value_regex_string += ')*'
+        words = value.split()
 
         outputs = self._io.outputs
-        found = False
         for output in outputs:
-            if re.match(fr'{value_regex_string}', output):
-                found = True
+            found = True
+            for word in words:
+                if not word in output:
+                    found = False
+                    break
+            if found:
+                break
 
         if not found:
             raise AssertionError(

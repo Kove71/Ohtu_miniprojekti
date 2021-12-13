@@ -2,10 +2,11 @@ from entities.book import Book
 from entities.blog import Blog
 from entities.podcast import Podcast
 from entities.video import Video
+from repositories.db_interface import DatabaseInterface
 
 class ReadingtipService:
     """Luokka, joka vastaa sovelluslogiikasta"""
-    def __init__(self, database):
+    def __init__(self, database: DatabaseInterface):
         """Luokan konstruktori
                 
             Args:
