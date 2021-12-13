@@ -53,4 +53,3 @@ Jonka jälkeen tietokanta tulee taas alustaa, jotta ohjelma toimisi.
 
 - [Backlog](https://docs.google.com/spreadsheets/d/1Av-S8CRkLMrIsAKHgrrVVXugRZbDxyBik0xdSajMxEg)
 - [Definition of done](dokumentaatio/definitionofdone.md)
-
