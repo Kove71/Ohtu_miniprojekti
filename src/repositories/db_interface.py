@@ -8,6 +8,9 @@ from entities.video import Video
 from db_connection import get_connection
 
 class DatabaseInterface:
+    # pylint: disable=locally-disabled, multiple-statements, fixme, line-too-long
+    # Tietokantakomentojen on perusteltua olla yli 100 merkkiä pitkiä
+
     """Luokka joka vastaa tietokannasta
     """
 
@@ -63,7 +66,7 @@ class DatabaseInterface:
         found_reading_tips = found_reading_tips + self.get_books()
         found_reading_tips = found_reading_tips + self.get_blogs()
         found_reading_tips = found_reading_tips + self.get_podcasts()
-        found_reading_tips = found_reading_tips + self.get_videos() 
+        found_reading_tips = found_reading_tips + self.get_videos()
         found_reading_tips.sort(key=lambda tip: tip.id)
 
         return found_reading_tips
@@ -105,7 +108,7 @@ class DatabaseInterface:
         for podcast in results:
             read = None if podcast[5] == 0 else podcast[5]
             podcasts.append(Podcast(podcast[0], podcast[1], podcast[2], podcast[3], podcast[4], read))
-        return podcasts   
+        return podcasts
 
     def get_videos(self):
         """Hakee tietokannasta kaikki videot ja palauttaa ne Video- objekteina
@@ -118,7 +121,7 @@ class DatabaseInterface:
         for video in results:
             read = None if video[5] == 0 else video[5]
             videos.append(Video(video[0], video[1], video[2], video[3], video[4], read))
-        return videos     
+        return videos
 
     def remove_tip(self, index: int):
         """Poistaa yhden lukuvinkin näkyvistä
@@ -155,6 +158,8 @@ class DatabaseInterface:
             self._db.execute("UPDATE book SET isbn = (?) WHERE tip_id = (?)", [new_value, index])
 
     def edit_blog(self, index, field, new_value):
+        """Muokkaa blogi-oliosta halutun kentän
+        """
         if field == 2:
             self._db.execute("UPDATE blog SET author = (?) WHERE tip_id = (?)", [new_value, index])
         if field == 3:
@@ -163,12 +168,16 @@ class DatabaseInterface:
             self._db.execute("UPDATE blog SET title = (?) WHERE tip_id = (?)", [new_value, index])
 
     def edit_podcast(self, index, field, new_value):
+        """Muokkaa podcast-oliosta halutun kentän
+        """
         if field == 2:
             self._db.execute("UPDATE podcast SET episode = (?) WHERE tip_id = (?)", [new_value, index])
         if field == 3:
             self._db.execute("UPDATE podcast SET url = (?) WHERE tip_id = (?)", [new_value, index])
 
     def edit_video(self, index, field, new_value):
+        """Muokkaa video-oliosta halutun kentän
+        """
         if field == 2:
             self._db.execute("UPDATE video SET url = (?) WHERE tip_id = (?)", [new_value, index])
         if field == 3:

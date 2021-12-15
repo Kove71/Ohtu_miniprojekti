@@ -4,6 +4,9 @@
 class Blog:
     """Luokka kuvaa blogityyppistä lukuvinkkiä
     """
+    # pylint: disable=locally-disabled, multiple-statements, fixme, too-many-arguments, too-many-instance-attributes
+    # Blogin ominaisuudet vaativat useamman kuin 5 parametria
+
     def __init__(self, id, name, author, url, title=None, description=None, read=None):
         """
         """
@@ -13,7 +16,6 @@ class Blog:
         self.url = url
         self.description = description if description != "" else None
         self.title = title if title != "" else None
-
         self.read = read
         self.type = 2
 
@@ -28,4 +30,6 @@ class Blog:
         return string
 
     def short_form(self):
+        """Palauttaa blogin id:n, nimen ja tekijän
+        """
         return f"Blog {self.id}: {self.name} by {self.author}"

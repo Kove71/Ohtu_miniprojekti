@@ -25,7 +25,7 @@ class ReadingtipLibrary: # pylint: disable=invalid-name
         self.service = ReadingtipService(self.database)
 
         self._ui = UI(self._io, self.service)
-        
+
 
     def input(self, value):
         """Luo syötteen

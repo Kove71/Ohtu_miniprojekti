@@ -4,6 +4,9 @@
 class Book:
     """Kirja
     """
+    # pylint: disable=locally-disabled, multiple-statements, fixme, too-many-arguments
+    # Kirjan ominaisuudet vaativat useamman kuin 5 parametria
+
     def __init__(self, id, name, author, isbn=None, description=None, read=None):
         """Kirjan konstruktori
         """
@@ -12,7 +15,6 @@ class Book:
         self.author = author
         self.isbn = isbn or None
         self.description = description or None
-
         self.read = read
         self.type = 1
 
@@ -26,4 +28,6 @@ class Book:
         return string
 
     def short_form(self):
+        """Palauttaa kirja-olion id:n, nimen ja tekijän
+        """
         return f"Book {self.id}: {self.name} by {self.author}"

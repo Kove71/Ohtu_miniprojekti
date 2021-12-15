@@ -1,3 +1,5 @@
+"""Sovelluslogiikka
+"""
 from entities.book import Book
 from entities.blog import Blog
 from entities.podcast import Podcast
@@ -8,7 +10,7 @@ class ReadingtipService:
     """Luokka, joka vastaa sovelluslogiikasta"""
     def __init__(self, database: DatabaseInterface):
         """Luokan konstruktori
-                
+
             Args:
                 database: tietokannasta vastaava luokka
         """
@@ -21,11 +23,13 @@ class ReadingtipService:
         self._db.add_book(book)
 
     def add_blog(self, name, author, url, title=None, description=None):
+        # pylint: disable=R0913
+        # Blogin ominaisuudet vaativat useamman kuin 5 parametria
         """Lisää blogi-olion tietokantaan
         """
         blog = Blog(0, name, author, url, title, description)
         self._db.add_blog(blog)
-    
+
     def add_podcast(self, name, episode, url=None, description=None):
         """lisää podcast-olion tietokantaan
         """

@@ -4,6 +4,9 @@
 class Video:
     """Video
     """
+    # pylint: disable=locally-disabled, multiple-statements, fixme, too-many-arguments
+    # Videon ominaisuudet vaativat useamman kuin 5 parametria
+
     def __init__(self, id, name, url, channel=None, description=None, read=None):
         """Videon konstruktori
         """
@@ -12,7 +15,6 @@ class Video:
         self.url = url
         self.description = description if description != "" else None
         self.channel = channel if channel != "" else None
-        self.id = id
         self.type = 4
         self.read = read
 
@@ -24,6 +26,8 @@ class Video:
                 f"Description: {self.description if self.description is not None else 'None'}\033[0;0;0m\n" \
                 f"Watched: {'Not watched' if self.read is None else self.read}\n"
         return string
-        
+
     def short_form(self):
+        """Metodi palauttaa video-olion id:n, nimen ja url-osoitteen
+        """
         return f"Video {self.id}: {self.name} url:{self.url}"

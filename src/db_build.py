@@ -11,7 +11,7 @@ def build_database(database_path = None):
         database = get_connection()
     else:
         database = get_connection(database_path)
-        
+
     sql = ['''
             CREATE TABLE IF NOT EXISTS readingtips (
             id INTEGER PRIMARY KEY, 
