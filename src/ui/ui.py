@@ -260,10 +260,10 @@ class UI:
             return
         new_value = self._io.read("\nNew value: \n")
 
-        if field == 1 or 4:
+        if field in (1, 4):
             self._service.edit_readingtip(index, field, new_value)
 
-        if field == 2 or 3:
+        if field in (2, 3):
             self._service.edit_book(index, field, new_value)
 
     def _edit_blog(self, index):
@@ -279,10 +279,10 @@ class UI:
             return
         new_value = self._io.read("\nNew value: \n")
 
-        if field == 1 or 4:
+        if field in (1, 4):
             self._service.edit_readingtip(index, field, new_value)
 
-        if field == 2 or 3 or 5:
+        if field in (2, 3, 5):
             self._service.edit_blog(index, field, new_value)
 
     def _edit_podcast(self, index):
@@ -298,10 +298,10 @@ class UI:
             return
         new_value = self._io.read("\nNew value: \n")
 
-        if field == 1 or 4:
+        if field in (1, 4):
             self._service.edit_readingtip(index, field, new_value)
 
-        if field == 2 or 3:
+        if field in (2, 3):
             self._service.edit_podcast(index, field, new_value)
 
     def _edit_video(self, index):
@@ -317,10 +317,10 @@ class UI:
             return
         new_value = self._io.read("\nNew value: \n")
 
-        if field == 1 or 4:
+        if field in (1, 4):
             self._service.edit_readingtip(index, field, new_value)
 
-        if field == 2 or 3:
+        if field in (2, 3):
             self._service.edit_video(index, field, new_value)
 
     def _show_editable_tips(self, index):
