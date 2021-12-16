@@ -75,3 +75,38 @@ class TestDatabaseInterface(unittest.TestCase):
         build_database()
         self.database.add_book(self.book)
         self.assertEqual(self.database.mark_as_read(1), True)
+    
+    def test_edit_book(self):
+        build_database()
+        self.database.add_book(self.book)
+        self.database.edit_book(1, 2, "uusi nimi")
+        self.assertEqual(self.database.get_books()[0].author, "uusi nimi")
+        self.database.edit_book(1, 3, "uusi isbn")
+        self.assertEqual(self.database.get_books()[0].isbn, "uusi isbn")
+
+    def test_edit_blog(self):
+        build_database()
+        self.database.add_blog(self.blog)
+        self.database.edit_blog(1, 2, "uusi nimi")
+        self.assertEqual(self.database.get_blogs()[0].author, "uusi nimi")
+        self.database.edit_blog(1, 3, "uusi url")
+        self.assertEqual(self.database.get_blogs()[0].url, "uusi url")
+        self.database.edit_blog(1, 5, "uusi otsikko")
+        self.assertEqual(self.database.get_blogs()[0].title, "uusi otsikko")
+
+    def test_edit_podcast(self):
+        build_database()
+        self.database.add_podcast(self.podcast)
+        self.database.edit_podcast(1, 2, "uusi jakso")
+        self.assertEqual(self.database.get_podcasts()[0].episode, "uusi jakso")
+        self.database.edit_podcast(1, 3, "uusi url")
+        self.assertEqual(self.database.get_podcasts()[0].url, "uusi url")
+
+    def test_edit_video(self):
+        build_database()
+        self.database.add_video(self.video)
+        self.database.edit_video(1, 2, "uusi url")
+        self.assertEqual(self.database.get_videos()[0].url, "uusi url")
+
+
+
