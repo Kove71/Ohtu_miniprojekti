@@ -5,6 +5,7 @@ src/tests/__pycache__/
 src/ui/__pycache__/
 src/entities/__pycache__/
 src/repositories/__pycache__/
+src/services/__pycache__/
 **/__pycache__/
 .pytest_cache
 data/**
