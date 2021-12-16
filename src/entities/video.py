@@ -19,9 +19,9 @@ class Video:
         self.read = read
 
     def __str__(self):
-        string = f"\033[1;37;40mVideo {self.id: <71}" \
-                f"\033[0;31;47m\nName: \033[0;30;47m{self.name: <50}" \
-                f"\033[1;34;0m\nURL: {self.url}\n" \
+        string = f"\033[1;37;42mVideo {self.id: <50}\033[0;0;0m\n" \
+                f"\033[0;32;47mName: \033[0;30;47m{self.name: <50}\033[0;0;0m\n" \
+                f"URL: {self.url}\n" \
                 f"Channel: {self.channel if self.channel is not None else 'Unknown'}\n" \
                 f"Description: {self.description if self.description is not None else 'None'}\033[0;0;0m\n" \
                 f"Watched: {'Not watched' if self.read is None else self.read}\n"
