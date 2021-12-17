@@ -80,7 +80,12 @@ class UI:
         for item in self._service.get_items():
             self._io.write(item)
 
-        selection = int(self._io.read("\nmark which item as read?(Item number)\n"))
+        try:
+            selection = int(self._io.read("\nmark which item as read?(Item number)\n"))
+        except:
+            self._io.write("Invalid command")
+            return
+
         self._service.mark_as_read(selection)
 
         self._io.write("\ndone")
