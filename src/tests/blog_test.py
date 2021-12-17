@@ -1,8 +1,10 @@
+"""Testataan blog-luokkaa
+"""
 import unittest
 from entities.blog import Blog
 
-class TestBook(unittest.TestCase):
-    """Testiluokka Book -luokalle
+class TestBlog(unittest.TestCase):
+    """Testiluokka Blog -luokalle
     """
     def test_full_imput_prints_correctly_with_full_info(self):
         """Testaa että luokka tulostuu oikein kun kaikkiin tietoihin annetaan jokin tulos
@@ -30,8 +32,10 @@ class TestBook(unittest.TestCase):
             blog.short_form(),
             f"Blog {12}: {'My Lyfe'} by {'Jhon B. Elton II'}"
         )
-    
+
     def test_partial_imputs_prints_correctly(self):
+        """Testataan, että tulostaa oikein, kun ei anneta kaikkia tietoja
+        """
         blog = Blog(
             12,
             "My Lyfe",

@@ -1,8 +1,9 @@
+"""testataan video-luokkaa"""
 import unittest
 from entities.video import Video
 
-class TestBlog(unittest.TestCase):
-    """Testiluokka Book -luokalle
+class TestVideo(unittest.TestCase):
+    """Testiluokka Video -luokalle
     """
     def test_full_imput_prints_correctly_with_full_info(self):
         """Testaa että luokka tulostuu oikein kun kaikkiin tietoihin annetaan jokin tulos
@@ -29,8 +30,10 @@ class TestBlog(unittest.TestCase):
             video.short_form(),
             f"Video {12}: {'Crazy Stuff'} url:{'carzyland.tv/episode_12'}"
         )
-    
+
     def test_partial_imputs_prints_correctly(self):
+        """Testataan, että tulostaa oikein, kun ei anneta kaikkia tietoja
+        """
         video = Video(
            12,
             "Crazy Stuff",
@@ -45,7 +48,7 @@ class TestBlog(unittest.TestCase):
                 f"Description: " \
                 f"{'None'}\033[0;0;0m\n" \
                 f"Watched: {'Not watched'}\n"
-    
+
         )
         self.assertEqual(
             video.short_form(),

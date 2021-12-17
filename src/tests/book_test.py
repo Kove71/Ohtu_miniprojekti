@@ -1,3 +1,4 @@
+"""Testataan book-luokkaa"""
 import unittest
 from entities.book import Book
 
@@ -29,8 +30,10 @@ class TestBook(unittest.TestCase):
             book.short_form(),
             f"Book {12}: {'Thunder diary'} by {'Jhon B. Elton II'}"
         )
-    
+
     def test_partial_imputs_prints_correctly(self):
+        """Testataan, että tulostaa oikein, kun ei anneta kaikkia tietoja
+        """
         book = Book(
             12,
             "Thunder diary",

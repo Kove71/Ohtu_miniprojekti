@@ -1,3 +1,4 @@
+"""Testataan podcast-luokkaa"""
 import unittest
 from entities.podcast import Podcast
 
@@ -30,8 +31,10 @@ class TestPodcast(unittest.TestCase):
             podcast.short_form(),
             f"Podcast {12}: {'Tales of Dark'} episode {'Hiding in the Shadows'}"
         )
-    
+
     def test_partial_imputs_prints_correctly(self):
+        """Testataan, että tulostaa oikein, kun ei anneta kaikkia tietoja
+        """
         podcast = Podcast(
             12,
             "Tales of Dark",
