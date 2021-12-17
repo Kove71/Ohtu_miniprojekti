@@ -12,3 +12,4 @@ data/**
 log.html
 output.xml
 report.html
+test_db.db

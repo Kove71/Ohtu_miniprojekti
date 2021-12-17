@@ -4,13 +4,13 @@
 class Video:
     """Video
     """
-    # pylint: disable=locally-disabled, multiple-statements, fixme, too-many-arguments
+    # pylint: disable=locally-disabled, multiple-statements, fixme, too-many-arguments, invalid-name
     # Videon ominaisuudet vaativat useamman kuin 5 parametria
 
-    def __init__(self, id, name, url, channel=None, description=None, read=None):
+    def __init__(self, id_, name, url, channel=None, description=None, read=None):
         """Videon konstruktori
         """
-        self.id = id
+        self.id = id_
         self.name = name
         self.url = url
         self.description = description if description != "" else None
@@ -23,7 +23,8 @@ class Video:
                 f"\033[0;32;47mName: \033[0;30;47m{self.name: <50}\033[0;0;0m\n" \
                 f"URL: {self.url}\n" \
                 f"Channel: {self.channel if self.channel is not None else 'Unknown'}\n" \
-                f"Description: {self.description if self.description is not None else 'None'}\033[0;0;0m\n" \
+                f"Description: " \
+                f"{self.description if self.description is not None else 'None'}\033[0;0;0m\n" \
                 f"Watched: {'Not watched' if self.read is None else self.read}\n"
         return string
 

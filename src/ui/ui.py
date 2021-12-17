@@ -11,6 +11,8 @@ class UI:
         console_io: io
     """
 
+    # pylint: disable=bare-except
+
     def __init__(self, console_io: ConsoleIO, service: ReadingtipService):
         self._actions = {
             "a": "add a new item",
@@ -207,9 +209,9 @@ class UI:
         """Kysyy käyttäjältä, minkä tyyppistä lukuvinkkiä muutetaan ja ohjaa eteenpäin
         """
         try:
-            type = int(self._io.read(
+            type_ = int(self._io.read(
                 "\nThe type of readingtip to edit: \n1: book\n2: blog\n3: podcast\n4: video\n"))
-            if type >= 5 or type <= 0:
+            if type_ >= 5 or type_ <= 0:
                 self._io.write("Invalid command")
                 return
         except:
@@ -220,7 +222,7 @@ class UI:
         items = False
         id_numbers = []
         for item in self._service.get_items():
-            if item.type == type:
+            if item.type == type_:
                 items = True
                 id_numbers.append(item.id)
                 self._io.write(item)
@@ -239,13 +241,13 @@ class UI:
             self._io.write("Invalid selection")
             return
 
-        if type == 1:
+        if type_ == 1:
             self._edit_book(index)
-        elif type == 2:
+        elif type_ == 2:
             self._edit_blog(index)
-        elif type == 3:
+        elif type_ == 3:
             self._edit_podcast(index)
-        elif type == 4:
+        elif type_ == 4:
             self._edit_video(index)
 
     def _edit_book(self, index):

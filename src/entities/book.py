@@ -4,13 +4,13 @@
 class Book:
     """Kirja
     """
-    # pylint: disable=locally-disabled, multiple-statements, fixme, too-many-arguments
+    # pylint: disable=locally-disabled, multiple-statements, fixme, too-many-arguments, invalid-name
     # Kirjan ominaisuudet vaativat useamman kuin 5 parametria
 
-    def __init__(self, id, name, author, isbn=None, description=None, read=None):
+    def __init__(self, id_, name, author, isbn=None, description=None, read=None):
         """Kirjan konstruktori
         """
-        self.id = id
+        self.id = id_
         self.name = name
         self.author = author
         self.isbn = isbn or None
@@ -23,7 +23,8 @@ class Book:
                 f"\033[0;34;47mName: \033[0;30;47m{self.name: <50}\033[0;0;0m\n" \
                 f"Author: {self.author}\n" \
                 f"ISBN: {self.isbn if self.isbn is not None else 'Unknown'}\n" \
-                f"Description: {self.description if self.description is not None else 'None'}\033[0;0;0m\n" \
+                f"Description: " \
+                f"{self.description if self.description is not None else 'None'}\033[0;0;0m\n" \
                 f"Read: {'Not read' if self.read is None else self.read}\n"
         return string
 

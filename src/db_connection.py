@@ -11,7 +11,7 @@ def get_connection(database_path = None):
     """
     if not database_path:
         return CONNECTION
-    else:
-        alt_connection = sqlite3.connect(database_path)
-        alt_connection.isolation_level = None
-        return alt_connection
+
+    alt_connection = sqlite3.connect(database_path)
+    alt_connection.isolation_level = None
+    return alt_connection

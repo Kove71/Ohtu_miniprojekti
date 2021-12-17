@@ -16,13 +16,14 @@ class StubIO:
         """
         self.outputs.append(str(value))
 
+    # pylint: disable=unused-argument
+    # prompt tarvitaan robot-testeihin
     def read(self, prompt=None):
         """Palauttaa viimeisimmän alkion inputs-listalta
         """
         if len(self.inputs) > 0:
             return self.inputs.pop(0)
-        else:
-            return "q"
+        return "q"
 
     def add_input(self, value):
         """Lisää annetun parametrin inputs-listalle

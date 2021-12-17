@@ -4,13 +4,13 @@
 class Blog:
     """Luokka kuvaa blogityyppistä lukuvinkkiä
     """
-    # pylint: disable=locally-disabled, multiple-statements, fixme, too-many-arguments, too-many-instance-attributes
+    # pylint: disable=locally-disabled, multiple-statements, fixme, too-many-arguments, too-many-instance-attributes, invalid-name
     # Blogin ominaisuudet vaativat useamman kuin 5 parametria
 
-    def __init__(self, id, name, author, url, title=None, description=None, read=None):
+    def __init__(self, id_, name, author, url, title=None, description=None, read=None):
         """
         """
-        self.id = id
+        self.id = id_
         self.name = name
         self.author = author
         self.url = url

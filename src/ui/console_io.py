@@ -5,6 +5,8 @@ class ConsoleIO:
     lukemisesta
     """
 
+    # pylint: disable=no-self-argument
+
     def read(input_text = ""):
         """konsolin input
         Args:
