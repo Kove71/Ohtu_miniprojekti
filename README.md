@@ -54,3 +54,4 @@ Jonka jälkeen tietokanta tulee taas alustaa, jotta ohjelma toimisi.
 - [Backlog](https://docs.google.com/spreadsheets/d/1Av-S8CRkLMrIsAKHgrrVVXugRZbDxyBik0xdSajMxEg)
 - [Definition of done](dokumentaatio/definitionofdone.md)
 - [Testikattavuusraportti](https://github.com/Kove71/Ohtu_miniprojekti/blob/main/dokumentaatio/Testikattavuusraportti.md)
+- [Loppuraportti](https://helsinkifi-my.sharepoint.com/:w:/g/personal/ainokuos_ad_helsinki_fi/EXS-4mN4xK1CuSO284XrTPoBubftbwnShJsRzx4FtFaLAQ?e=PwCsHQ)
