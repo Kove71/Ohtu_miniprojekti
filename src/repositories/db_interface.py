@@ -1,6 +1,6 @@
 """Vastuussa tietokannan toiminnoista
 """
-import datetime
+from datetime import date
 from entities.blog import Blog
 from entities.book import Book
 from entities.podcast import Podcast
@@ -131,11 +131,7 @@ class DatabaseInterface:
     def mark_as_read(self, index: int):
         """Lisää lukuvinkkiin aikaleiman
         """
-        date = datetime.datetime.now()
-        year = f'{date.year}'
-        month = f'{date.month:02d}'
-        day = f'{date.day:02d}'
-        timestamp = f'{year}-{month}-{day}'
+        timestamp = date.now()
 
         self._db.execute("UPDATE readingtips SET read = (?) WHERE id = (?)", [timestamp, index])
 
